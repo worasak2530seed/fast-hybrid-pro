@@ -24,18 +24,26 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install "git+https://github.com/googlecolab/google-colab-cli.git"
 
-      - name: Configure Colab CLI credentials
+      - name: Configure Google ADC credentials
         env:
-          COLAB_CLI_TOKEN_JSON: ${{ secrets.COLAB_CLI_TOKEN_JSON }}
+          COLAB_ADC_JSON: ${{ secrets.COLAB_ADC_JSON }}
         run: |
-          if [ -z "${COLAB_CLI_TOKEN_JSON:-}" ]; then
-            echo "::error::Missing GitHub secret COLAB_CLI_TOKEN_JSON"
-            echo "Create the secret from the one-time Colab CLI OAuth token before running this workflow."
+          set -euo pipefail
+
+          if [ -z "${COLAB_ADC_JSON:-}" ]; then
+            echo "::error::Missing GitHub secret COLAB_ADC_JSON"
+            echo "Add the Google Application Default Credentials JSON as a GitHub Actions secret."
             exit 1
           fi
-          mkdir -p "$HOME/.config/colab-cli"
-          printf '%s' "$COLAB_CLI_TOKEN_JSON" > "$HOME/.config/colab-cli/token.json"
-          chmod 600 "$HOME/.config/colab-cli/token.json"
+
+          printf '%s' "$COLAB_ADC_JSON" > "$RUNNER_TEMP/adc.json"
+          chmod 600 "$RUNNER_TEMP/adc.json"
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/adc.json" >> "$GITHUB_ENV"
+
+      - name: Verify Colab authentication
+        run: |
+          set -euo pipefail
+          colab --auth=adc whoami
 
       - name: Run notebook on a fresh Colab runtime
         env:
@@ -43,15 +51,19 @@ jobs:
         run: |
           set -euo pipefail
           SESSION="fast-hybrid-pro-${GITHUB_RUN_ID}"
-          trap 'colab --auth=oauth2 stop -s "$SESSION" || true' EXIT
 
-          colab --auth=oauth2 new -s "$SESSION"
-          colab --auth=oauth2 exec -s "$SESSION" -f Fast_Hybrid_Pro.ipynb
+          cleanup() {
+            colab --auth=adc stop -s "$SESSION" || true
+          }
+          trap cleanup EXIT
+
+          colab --auth=adc new -s "$SESSION"
+          colab --auth=adc exec -s "$SESSION" -f Fast_Hybrid_Pro.ipynb
 
           test -f Fast_Hybrid_Pro_output.ipynb
           mkdir -p results
           cp Fast_Hybrid_Pro_output.ipynb results/Fast_Hybrid_Pro_latest.ipynb
-          colab --auth=oauth2 log -s "$SESSION" -o results/Fast_Hybrid_Pro_execution_log.ipynb
+          colab --auth=adc log -s "$SESSION" -o results/Fast_Hybrid_Pro_execution_log.ipynb
 
       - name: Validate executed notebook
         run: |
@@ -60,6 +72,9 @@ jobs:
           from pathlib import Path
 
           p = Path("results/Fast_Hybrid_Pro_latest.ipynb")
+          if not p.exists():
+              raise SystemExit("Missing executed notebook output")
+
           nb = json.loads(p.read_text(encoding="utf-8"))
 
           errors = []
@@ -76,10 +91,11 @@ jobs:
                       )
 
           print(f"Executed code cells: {executed}")
+
           if errors:
               print("Notebook errors:")
-              for e in errors:
-                  print(e)
+              for error in errors:
+                  print(error)
               raise SystemExit(1)
 
           print("NOTEBOOK_EXECUTION_VALID")
@@ -87,9 +103,13 @@ jobs:
 
       - name: Commit execution results
         run: |
+          set -euo pipefail
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add results/Fast_Hybrid_Pro_latest.ipynb results/Fast_Hybrid_Pro_execution_log.ipynb
+
           if git diff --cached --quiet; then
             echo "No result changes to commit."
           else
