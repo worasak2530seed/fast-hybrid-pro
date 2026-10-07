@@ -58,7 +58,7 @@ jobs:
           trap cleanup EXIT
 
           colab --auth=adc new -s "$SESSION"
-          colab --auth=adc exec -s "$SESSION" -f Fast_Hybrid_Pro.ipynb
+          colab --auth=adc exec --timeout 300 -s "$SESSION" -f Fast_Hybrid_Pro.ipynb
 
           test -f Fast_Hybrid_Pro_output.ipynb
           mkdir -p results
