@@ -10,6 +10,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: fast-hybrid-pro-colab
+  cancel-in-progress: true
+
 jobs:
   run-colab:
     runs-on: ubuntu-latest
@@ -58,7 +62,7 @@ jobs:
           trap cleanup EXIT
 
           colab --auth=adc new -s "$SESSION"
-          colab --auth=adc exec --timeout 300 -s "$SESSION" -f Fast_Hybrid_Pro.ipynb
+          colab --auth=adc exec --timeout 900 -s "$SESSION" -f Fast_Hybrid_Pro.ipynb
 
           test -f Fast_Hybrid_Pro_output.ipynb
           mkdir -p results
