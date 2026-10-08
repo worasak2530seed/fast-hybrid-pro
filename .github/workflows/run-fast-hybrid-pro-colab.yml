@@ -62,6 +62,10 @@ jobs:
           trap cleanup EXIT
 
           colab --auth=adc new -s "$SESSION"
+          mkdir -p results
+          if [ -f results/production_signal_journal.csv ]; then
+            colab --auth=adc upload -s "$SESSION" results/production_signal_journal.csv /content/production_signal_journal.csv
+          fi
           colab --auth=adc exec --timeout 900 -s "$SESSION" -f Fast_Hybrid_Pro.ipynb
 
           test -f Fast_Hybrid_Pro_output.ipynb
