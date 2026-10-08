@@ -73,11 +73,12 @@ The stock universe is **not hand-picked anymore**. Before indicators/signals are
 - Market: `SET` or `mai`
 - Market cap: `> 5,000 MB`
 - Average 20-day trading value: `>= 10 MB/day`
+- Price: `1–80 THB`
 - Exclude sectors: `BANK`, `FIN`, `INSUR`, `PROP`, `PF&REIT`, `TOURISM`
 
 The excluded sectors correspond to banking, finance/hire-purchase, insurance, property/REITs, and tourism/leisure (including hotels) under SET classification.
 
-The `10 MB/day` liquidity threshold is the current scanner floor; it can be raised later only through an explicit research/validation cycle.
+The `10 MB/day` liquidity threshold is the current scanner floor; it can be raised later only through an explicit research/validation cycle. The `1–80 THB` price gate is also part of the canonical universe filter and is not a strategy-optimization parameter.
 
 The production-readiness audit is rerun after each universe rebuild; the number of production symbols is therefore dynamic. The audit confirmed sufficient historical bars and readiness of the required OHLCV, EMA75, and ATR14 inputs.
 
@@ -91,7 +92,9 @@ Completed research Cells 12.5–12.31 have been moved out of the Production note
 
 These cells are historical evidence only. They are **not** part of the Production execution path and must not be continued or promoted without a new, explicitly approved out-of-sample research cycle.
 
-The new universe filter is a scanner/universe change, not a promotion of any archived research variant.
+The same canonical fundamental universe gate is applied before indicators, signals, and backtests. The new universe filter is a scanner/universe change, not a promotion of any archived research variant.
+
+For research integrity, the current Yahoo market-cap value is treated as a live universe snapshot. It must not be described as a point-in-time historical market-cap series; a fully survivorship-free historical fundamental backtest requires historical market-cap snapshots. This limitation is kept explicit so future research cannot silently overstate the evidence.
 
 The cleanup did not change the frozen Production strategy.
 
