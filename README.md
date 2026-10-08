@@ -75,7 +75,7 @@ The stock universe is **not hand-picked anymore**. Before indicators/signals are
 - Average 20-day trading value: `>= 10 MB/day`
 - Exclude sectors: `BANK`, `FIN`, `INSUR`, `PROP`, `PF&REIT`, `TOURISM`
 
-The excluded sectors correspond to banking, finance/hire-purchase, insurance, property/REITs, and tourism/leisure (including hotels) under SET classification. citeturn1search1turn1search2
+The excluded sectors correspond to banking, finance/hire-purchase, insurance, property/REITs, and tourism/leisure (including hotels) under SET classification.
 
 The `10 MB/day` liquidity threshold is the current scanner floor; it can be raised later only through an explicit research/validation cycle.
 
