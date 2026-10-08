@@ -60,16 +60,26 @@ There is currently **no scheduled daily run**. This is intentional; no recurring
 
 ## Production status
 
-The Production configuration is currently frozen:
+Production strategy parameters remain frozen:
 
 - Minimum score: `4`
 - Weekly confirmation: `False`
 - ATR multiplier: `1.2`
 - Target 2: `15%`
 - Maximum holding period: `20` trading days
-- Production universe: `TKN.BK`, `SAPPE.BK`, `SPA.BK`, `XO.BK`, `FORTH.BK`, `DITTO.BK`, `ICHI.BK`, `MASTER.BK`
 
-The latest verified production-readiness audit passed for all 8 production symbols. The audit confirmed sufficient historical bars and readiness of the required OHLCV, EMA75, and ATR14 inputs.
+The stock universe is **not hand-picked anymore**. Before indicators/signals are calculated, the notebook rebuilds the universe from SET/mai listed-company classification and applies mandatory gates:
+
+- Market: `SET` or `mai`
+- Market cap: `> 5,000 MB`
+- Average 20-day trading value: `>= 10 MB/day`
+- Exclude sectors: `BANK`, `FIN`, `INSUR`, `PROP`, `PF&REIT`, `TOURISM`
+
+The excluded sectors correspond to banking, finance/hire-purchase, insurance, property/REITs, and tourism/leisure (including hotels) under SET classification. citeturn1search1turn1search2
+
+The `10 MB/day` liquidity threshold is the current scanner floor; it can be raised later only through an explicit research/validation cycle.
+
+The production-readiness audit is rerun after each universe rebuild; the number of production symbols is therefore dynamic. The audit confirmed sufficient historical bars and readiness of the required OHLCV, EMA75, and ATR14 inputs.
 
 A run with zero current Canonical signals is a valid scanner result; it is not treated as an execution error.
 
@@ -80,6 +90,8 @@ Completed research Cells 12.5–12.31 have been moved out of the Production note
 `research/archive_12.5_to_12.31.ipynb`
 
 These cells are historical evidence only. They are **not** part of the Production execution path and must not be continued or promoted without a new, explicitly approved out-of-sample research cycle.
+
+The new universe filter is a scanner/universe change, not a promotion of any archived research variant.
 
 The cleanup did not change the frozen Production strategy.
 
