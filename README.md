@@ -1,28 +1,51 @@
 # Fast Hybrid Pro
 
-Research and backtesting project for the Hybrid strategy.
+Research and production execution repository for the Hybrid strategy.
 
 ## Architecture
 
 **GitHub = source of truth**  
-**Google Colab = execution engine**
+**Google Colab = execution engine**  
+**GitHub Actions = orchestration and result persistence**
 
 Repository: `worasak2530seed/fast-hybrid-pro`
 
-## Current status
-
-The repository has been prepared as the canonical home for the Hybrid project without overwriting the existing Colab notebook.
-
-Structure:
+## Repository structure
 
 ```text
 fast-hybrid-pro/
-├── cells/          # standalone canonical research cells
-├── docs/           # workflow and research rules
-├── notebooks/      # canonical Colab notebooks
-├── src/            # reusable Python modules
+├── .github/workflows/        # GitHub Actions → Colab automation
+├── cells/                    # standalone canonical research cells
+├── docs/                     # workflow and research rules
+├── notebooks/                # canonical Colab notebooks
+├── research/                 # archived research only
+├── results/                  # latest executed notebook and execution log
+├── src/                      # reusable Python modules
+├── Fast_Hybrid_Pro.ipynb     # production notebook
 └── README.md
 ```
+
+## Automated execution
+
+The production notebook can be executed on a fresh Google Colab runtime through GitHub Actions.
+
+The workflow is:
+
+1. GitHub Actions checks out the repository.
+2. The workflow authenticates to Google Cloud/Colab using the `COLAB_ADC_JSON` GitHub Actions secret.
+3. A fresh Colab runtime is created for the run.
+4. `Fast_Hybrid_Pro.ipynb` is executed in that runtime.
+5. The executed notebook is validated and any notebook code-cell errors fail the workflow.
+6. The executed notebook is saved as `results/Fast_Hybrid_Pro_latest.ipynb`.
+7. The Colab execution log is saved as `results/Fast_Hybrid_Pro_execution_log.ipynb`.
+8. The results are committed back to GitHub.
+
+The workflow supports both:
+
+- manual execution with `workflow_dispatch`
+- automatic execution when `Fast_Hybrid_Pro.ipynb` changes on `main`
+
+There is currently **no scheduled daily run**. This is intentional; no recurring execution has been added.
 
 ## Validation principles
 
@@ -32,13 +55,34 @@ fast-hybrid-pro/
 - Overlapping capital exposure is audited.
 - Trade-data integrity is checked before portfolio aggregation.
 - Robustness tests are kept separate from optimization.
+- Production configuration is not changed merely because a research variant looks better in-sample.
+- Archived research is not part of the Production execution path.
 
-## Execution model
+## Production status
 
-Open the canonical notebook from GitHub in Google Colab and execute it there. GitHub can store and version the notebook, while Colab provides the runtime.
+The Production configuration is currently frozen:
 
-A fully unattended GitHub → private Colab runtime → results loop requires a separate automation layer; it is intentionally not added here yet.
+- Minimum score: `4`
+- Weekly confirmation: `False`
+- ATR multiplier: `1.2`
+- Target 2: `15%`
+- Maximum holding period: `20` trading days
+- Production universe: `TKN.BK`, `SAPPE.BK`, `SPA.BK`, `XO.BK`, `FORTH.BK`, `DITTO.BK`, `ICHI.BK`, `MASTER.BK`
 
-## Current research baseline
+The latest verified production-readiness audit passed for all 8 production symbols. The audit confirmed sufficient historical bars and readiness of the required OHLCV, EMA75, and ATR14 inputs.
 
-The current Hybrid work includes portfolio-capital auditing, OOS/time-split validation, and MACD robustness analysis. Existing Colab results are not overwritten by this repository setup.
+A run with zero current Canonical signals is a valid scanner result; it is not treated as an execution error.
+
+## Research archive
+
+Completed research Cells 12.5–12.31 have been moved out of the Production notebook and preserved at:
+
+`research/archive_12.5_to_12.31.ipynb`
+
+These cells are historical evidence only. They are **not** part of the Production execution path and must not be continued or promoted without a new, explicitly approved out-of-sample research cycle.
+
+The cleanup did not change the frozen Production strategy.
+
+## Current operating rule
+
+Prefer verification of the current repository and executed results over assumptions from older research runs. Do not revive archived research branches accidentally.
