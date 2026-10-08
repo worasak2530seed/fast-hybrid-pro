@@ -74,6 +74,20 @@ jobs:
           colab --auth=adc log -s "$SESSION" -o results/Fast_Hybrid_Pro_execution_log.ipynb
           colab --auth=adc download -s "$SESSION" /content/production_signal_journal.csv results/production_signal_journal.csv
 
+      - name: Persist raw execution outputs
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/Fast_Hybrid_Pro_latest.ipynb results/Fast_Hybrid_Pro_execution_log.ipynb
+          git add -f results/production_signal_journal.csv
+          if git diff --cached --quiet; then
+            echo "No raw execution changes to commit."
+          else
+            git commit -m "chore: save raw Colab execution output"
+            git push
+          fi
+
       - name: Validate executed notebook
         run: |
           python - <<'PY'
