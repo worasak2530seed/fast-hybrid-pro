@@ -68,6 +68,7 @@ jobs:
           mkdir -p results
           cp Fast_Hybrid_Pro_output.ipynb results/Fast_Hybrid_Pro_latest.ipynb
           colab --auth=adc log -s "$SESSION" -o results/Fast_Hybrid_Pro_execution_log.ipynb
+          colab --auth=adc download -s "$SESSION" /content/results/production_signal_journal.csv results/production_signal_journal.csv
 
       - name: Validate executed notebook
         run: |
