@@ -117,7 +117,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add results/Fast_Hybrid_Pro_latest.ipynb results/Fast_Hybrid_Pro_execution_log.ipynb results/production_signal_journal.csv
+          git add results/Fast_Hybrid_Pro_latest.ipynb results/Fast_Hybrid_Pro_execution_log.ipynb\n          git add -f results/production_signal_journal.csv
 
           if git diff --cached --quiet; then
             echo "No result changes to commit."
