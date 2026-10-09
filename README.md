@@ -29,7 +29,9 @@ fast-hybrid-pro/
 
 ## Automated execution
 
-Routine research should be initiated from the user's Termux environment and executed on Google Colab, so research runs do not consume GitHub Actions minutes.
+Use the complete Termux runner at `termux/run_fast_hybrid_pro_colab.sh`. It fetches the canonical `main` branch, authenticates directly to Colab through the local Colab CLI OAuth2 cache, creates a fresh Colab session, runs the notebook, validates Cells 12.34 and 13.5–13.7, then commits results only after validation. It does not invoke GitHub Actions and does not require the old `COLAB_ADC_JSON` secret for local execution.
+
+Routine research must be initiated from Termux and executed on Google Colab, so research runs do not consume GitHub Actions minutes.
 
 The legacy workflow is manual-dispatch-only. Do not use it for routine backtests. Its old flow was:
 
@@ -69,13 +71,13 @@ The stock universe is **not hand-picked anymore**. Before indicators/signals are
 
 - Market: `SET` or `mai`
 - Market cap: `> 5,000 MB`
-- Average 20-day trading value: `>= 10 MB/day`
+- Total trading value across the latest 20 trading sessions: `> 20 MB`
 - Price: `1–80 THB`
 - Exclude sectors: `BANK`, `FIN`, `INSUR`, `PROP`, `PF&REIT`, `TOURISM`
 
 The excluded sectors correspond to banking, finance/hire-purchase, insurance, property/REITs, and tourism/leisure (including hotels) under SET classification.
 
-The `10 MB/day` liquidity threshold is the current scanner floor; it can be raised later only through an explicit research/validation cycle. The `1–80 THB` price gate is also part of the canonical universe filter and is not a strategy-optimization parameter.
+The liquidity gate is the **sum** of trading value across the latest 20 trading sessions, strictly greater than `20 MB` in total; it is not a per-day average. The `1–80 THB` price gate is also part of the canonical universe filter and is not a strategy-optimization parameter.
 
 The production-readiness audit is rerun after each universe rebuild; the number of production symbols is therefore dynamic. The audit confirmed sufficient historical bars and readiness of the required OHLCV, EMA75, and ATR14 inputs.
 
