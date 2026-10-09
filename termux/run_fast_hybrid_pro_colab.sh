@@ -158,7 +158,7 @@ if [ -s results/production_signal_journal.csv ]; then
 fi
 
 log "Executing the complete canonical notebook on Google Colab"
-colab --auth=oauth2 exec -s "$SESSION" -f Fast_Hybrid_Pro.ipynb
+colab --auth=oauth2 exec --timeout 1800 -s "$SESSION" -f Fast_Hybrid_Pro.ipynb
 
 [ -s Fast_Hybrid_Pro_output.ipynb ] || die "Colab did not produce Fast_Hybrid_Pro_output.ipynb."
 
