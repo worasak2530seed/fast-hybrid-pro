@@ -112,9 +112,15 @@ if ! printf '%s' "$JKC_SOURCE" | grep -q "$JKC_COMMIT"; then
     "git+https://github.com/googlecolab/jupyter-kernel-client.git@$JKC_COMMIT"
 fi
 
+# The Google fork declares jupyter-mimetypes as a runtime dependency, but its
+# dependency chain pulls pyarrow, which has no compatible Termux wheel.
+# Install the pure-Python package without resolving optional/native dependencies.
+python -m pip install --no-deps "jupyter-mimetypes==0.2.0"
+
 python - <<'PY'
 import sys
 try:
+    import jupyter_mimetypes
     import jupyter_kernel_client as jkc
     from jupyter_kernel_client import wsclient
 except Exception as exc:
