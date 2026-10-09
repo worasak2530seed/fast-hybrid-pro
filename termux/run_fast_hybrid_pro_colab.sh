@@ -82,10 +82,24 @@ if ! command -v colab >/dev/null 2>&1; then
   log "Installing the released Colab CLI with Android-compatible wheels"
   python -m pip install --only-binary=:all: \
     --extra-index-url https://termux-user-repository.github.io/pypi/ \
-    "google-colab-cli==0.6.0"
+    "google-colab-cli==0.6.0" "jupyter-kernel-client==0.15.0"
   export PATH="$HOME/.local/bin:${PREFIX:-/data/data/com.termux/files/usr}/bin:$PATH"
 fi
 command -v colab >/dev/null 2>&1 || die "The Colab CLI is still unavailable after the Termux-compatible installation. No research run was started."
+
+# Colab CLI 0.6.0 can break with jupyter-kernel-client 1.x because the kernel
+# client class was renamed. Keep the known-compatible 0.15.0 API on Termux.
+JKC_VERSION="$(python -c 'from importlib.metadata import version; print(version("jupyter-kernel-client"))' 2>/dev/null || true)"
+case "$JKC_VERSION" in
+  1.*)
+    log "Repairing incompatible jupyter-kernel-client $JKC_VERSION for Colab CLI"
+    python -m pip install --only-binary=:all: \
+      --extra-index-url https://termux-user-repository.github.io/pypi/ \
+      "jupyter-kernel-client==0.15.0"
+    ;;
+esac
+
+colab --version >/dev/null 2>&1 || die "The Colab CLI cannot start. Check its Termux dependencies; no Colab session was created."
 
 # OAuth2 uses the local Colab CLI token cache; it does not need the old
 # COLAB_ADC_JSON GitHub secret or a downloaded service-account JSON file.
