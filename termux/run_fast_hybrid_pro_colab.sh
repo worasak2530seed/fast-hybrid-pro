@@ -10,6 +10,7 @@ BASE_DIR="${FAST_HYBRID_HOME:-$HOME/colab-automation}"
 REPO_DIR="${FAST_HYBRID_REPO_DIR:-$BASE_DIR/fast-hybrid-pro}"
 SESSION="fast-hybrid-$(date +%Y%m%d-%H%M%S)"
 SESSION_CREATED=0
+RUN_TMP_DIR=""
 
 log() { printf '\n[%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S %Z')" "$*"; }
 die() { printf '\nERROR: %s\n' "$*" >&2; exit 1; }
@@ -19,6 +20,9 @@ cleanup() {
   if [ "$SESSION_CREATED" -eq 1 ]; then
     log "Stopping Colab session $SESSION"
     colab --auth=oauth2 stop -s "$SESSION" || true
+  fi
+  if [ -n "$RUN_TMP_DIR" ] && [ -d "$RUN_TMP_DIR" ]; then
+    rm -rf "$RUN_TMP_DIR"
   fi
   exit "$rc"
 }
@@ -99,9 +103,10 @@ colab --auth=oauth2 exec --timeout 3600 -s "$SESSION" -f Fast_Hybrid_Pro.ipynb
 
 [ -s Fast_Hybrid_Pro_output.ipynb ] || die "Colab did not produce Fast_Hybrid_Pro_output.ipynb."
 
-log "Exporting the Colab execution log and updated signal journal"
-colab --auth=oauth2 log -s "$SESSION" -o results/Fast_Hybrid_Pro_execution_log.ipynb
-colab --auth=oauth2 download -s "$SESSION" /content/production_signal_journal.csv results/production_signal_journal.csv
+RUN_TMP_DIR="$(mktemp -d "${TMPDIR:-/tmp}/fast-hybrid-pro.XXXXXX")"
+log "Exporting the Colab execution log and updated signal journal to a temporary directory"
+colab --auth=oauth2 log -s "$SESSION" -o "$RUN_TMP_DIR/Fast_Hybrid_Pro_execution_log.ipynb"
+colab --auth=oauth2 download -s "$SESSION" /content/production_signal_journal.csv "$RUN_TMP_DIR/production_signal_journal.csv"
 
 log "Validating notebook JSON, cell count, error outputs, and required research results"
 python - <<'PY'
@@ -180,9 +185,13 @@ if missing:
         + "; results will not be committed."
     )
 
-journal = Path("results/production_signal_journal.csv")
+run_tmp = Path(__import__("os").environ["RUN_TMP_DIR"])
+journal = run_tmp / "production_signal_journal.csv"
+log_path = run_tmp / "Fast_Hybrid_Pro_execution_log.ipynb"
 if not journal.is_file() or journal.stat().st_size == 0:
     raise SystemExit("Production signal journal is missing or empty.")
+if not log_path.is_file() or log_path.stat().st_size == 0:
+    raise SystemExit("Colab execution log is missing or empty.")
 
 Path("results/Fast_Hybrid_Pro_latest.ipynb").write_text(
     output_path.read_text(encoding="utf-8"), encoding="utf-8"
@@ -196,7 +205,10 @@ for line in research_text:
 print("COLAB_RUN_VALIDATED")
 PY
 
-# Do not commit any result unless every validation above succeeded.
+# Publish result artifacts only after every notebook and journal check passed.
+cp "$RUN_TMP_DIR/Fast_Hybrid_Pro_execution_log.ipynb" results/Fast_Hybrid_Pro_execution_log.ipynb
+cp "$RUN_TMP_DIR/production_signal_journal.csv" results/production_signal_journal.csv
+
 git add results/Fast_Hybrid_Pro_latest.ipynb results/Fast_Hybrid_Pro_execution_log.ipynb results/production_signal_journal.csv
 if git diff --cached --quiet; then
   log "Validated run completed, but the result files are unchanged; no empty commit created."
