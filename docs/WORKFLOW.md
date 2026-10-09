@@ -2,43 +2,49 @@
 
 ## Source of truth
 
-GitHub repository:
+- Repository: `worasak2530seed/fast-hybrid-pro`
+- Default branch: `main`
+- GitHub stores canonical code and validated run artifacts.
+- Termux is the local controller.
+- Google Colab is the execution engine.
 
-- `worasak2530seed/fast-hybrid-pro`
-- default branch: `main`
+## Supported routine runner
 
-The canonical source code and research logic should live in this repository.
+Use the complete script at `termux/run_fast_hybrid_pro_colab.sh`. The script:
 
-## Execution
+1. Checks the existing Termux GitHub CLI login and configures Git's credential helper.
+2. Clones or fast-forward-updates the canonical `main` branch without overwriting local modifications.
+3. Installs the official Google Colab CLI if it is missing.
+4. Uses the Colab CLI's local OAuth2 login/cache; no downloaded service-account JSON or `COLAB_ADC_JSON` GitHub secret is needed for this local path.
+5. Creates a fresh CPU Colab session and uploads the existing production signal journal.
+6. Runs the complete canonical notebook on Colab.
+7. Checks notebook JSON, matching source/output cell counts, absence of code-cell errors, and required fresh outputs from Cell 12.34 and Cells 13.5, 13.6, and 13.7.
+8. Downloads the updated journal and session log.
+9. Pushes result files to `main` only after every validation passes.
+10. Stops the Colab session on exit, including error exits.
 
-Google Colab is the execution environment; Termux is the intended local controller.
+A validated run can be started from Termux with:
 
-Recommended flow:
+```bash
+mkdir -p ~/colab-automation
+curl -fsSL https://raw.githubusercontent.com/worasak2530seed/fast-hybrid-pro/main/termux/run_fast_hybrid_pro_colab.sh -o ~/colab-automation/run_fast_hybrid_pro_colab.sh
+bash ~/colab-automation/run_fast_hybrid_pro_colab.sh
+```
 
-1. Keep canonical source in GitHub.
-2. Use the existing Termux setup to initiate a Colab runtime directly.
-3. Execute the canonical notebook on Colab, not on GitHub Actions.
-4. Retrieve and inspect the executed notebook and outputs.
-5. Save validated source/results to GitHub only after checks pass.
+The first direct Colab CLI OAuth2 login may ask the user to visit a Google URL and paste a one-time verification code. The token is cached locally by the CLI. This is an authentication consent step, not a research step. Do not put the token or credential files in GitHub.
 
-## Important boundary
+## GitHub Actions boundary
 
-GitHub by itself does not remotely press "Run All" on a private Colab runtime. A separate automation layer is required for fully unattended execution.
+The legacy workflow at `.github/workflows/run-fast-hybrid-pro-colab.yml` is manual-dispatch-only. Do not use it for routine research, and do not enable push triggers. The Termux script does not dispatch Actions.
 
-The repository's old Actions workflow is manual-dispatch-only and must not be used for routine research. Pushes to the notebook no longer trigger it.
+## Research integrity
 
-**GitHub = source of truth**  
-**Termux = local controller**  
-**Colab = execution engine**
-
-No Render, GitLab, CircleCI, or routine GitHub Actions research execution is part of this workflow.
-
-## Canonical research rules
-
-- Avoid look-ahead bias.
-- Keep train/in-sample and out-of-sample periods explicit.
-- Audit overlapping capital exposure.
-- Keep portfolio capital constraints explicit.
-- Validate trade data integrity before portfolio aggregation.
-- Treat robustness tests as validation, not as parameter optimization unless explicitly documented.
-- Prefer full reproducible cells/scripts over hidden notebook state.
+- No look-ahead bias.
+- Explicit chronological train/validation/test separation.
+- Portfolio capital and overlap constraints are audited.
+- Trade-data integrity is checked before aggregation.
+- Stress tests and optimization remain separate.
+- Daily trading-date labels are normalized to `Asia/Bangkok`; naive exchange-date labels must not be shifted from UTC.
+- Holding-period limits are measured in exchange trading sessions, not calendar days.
+- Production parameters stay frozen unless a robust OOS promotion gate passes and the user approves promotion.
+- Archived Cells 12.5–12.31 are historical only and must not be revived automatically.
