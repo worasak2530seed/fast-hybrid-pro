@@ -22,7 +22,8 @@ cleanup() {
     colab --auth=oauth2 stop -s "$SESSION" || true
   fi
   if [ -n "$RUN_TMP_DIR" ] && [ -d "$RUN_TMP_DIR" ]; then
-    rm -rf "$RUN_TMP_DIR"
+    rm -f "$RUN_TMP_DIR/Fast_Hybrid_Pro_execution_log.ipynb" "$RUN_TMP_DIR/production_signal_journal.csv"
+    rmdir "$RUN_TMP_DIR" 2>/dev/null || true
   fi
   exit "$rc"
 }
