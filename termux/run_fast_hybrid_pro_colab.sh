@@ -103,7 +103,7 @@ colab --auth=oauth2 exec --timeout 3600 -s "$SESSION" -f Fast_Hybrid_Pro.ipynb
 
 [ -s Fast_Hybrid_Pro_output.ipynb ] || die "Colab did not produce Fast_Hybrid_Pro_output.ipynb."
 
-RUN_TMP_DIR="$(mktemp -d "${TMPDIR:-/tmp}/fast-hybrid-pro.XXXXXX")"
+export RUN_TMP_DIR="$(mktemp -d "${TMPDIR:-/tmp}/fast-hybrid-pro.XXXXXX")"
 log "Exporting the Colab execution log and updated signal journal to a temporary directory"
 colab --auth=oauth2 log -s "$SESSION" -o "$RUN_TMP_DIR/Fast_Hybrid_Pro_execution_log.ipynb"
 colab --auth=oauth2 download -s "$SESSION" /content/production_signal_journal.csv "$RUN_TMP_DIR/production_signal_journal.csv"
