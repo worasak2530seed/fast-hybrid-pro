@@ -74,11 +74,18 @@ git pull --ff-only origin main
 git status --short
 
 if ! command -v colab >/dev/null 2>&1; then
-  log "Installing the official Google Colab CLI in Termux"
-  python -m pip install --upgrade "git+https://github.com/googlecolab/google-colab-cli.git"
+  log "Google Colab CLI is missing; preparing Termux-compatible dependencies"
+  command -v pkg >/dev/null 2>&1 || die "This runner expects Termux's pkg package manager. No package changes were made."
+  pkg install -y python python-pip clang git python-cryptography python-rpds-py python-pyarrow
+  log "Installing Tornado using the Termux-supported build path"
+  python -m pip install tornado
+  log "Installing the released Colab CLI with Android-compatible wheels"
+  python -m pip install --only-binary=:all: \
+    --extra-index-url https://termux-user-repository.github.io/pypi/ \
+    "google-colab-cli==0.6.0"
   export PATH="$HOME/.local/bin:${PREFIX:-/data/data/com.termux/files/usr}/bin:$PATH"
 fi
-command -v colab >/dev/null 2>&1 || die "The Google Colab CLI installation did not produce a 'colab' command."
+command -v colab >/dev/null 2>&1 || die "The Colab CLI is still unavailable after the Termux-compatible installation. No research run was started."
 
 # OAuth2 uses the local Colab CLI token cache; it does not need the old
 # COLAB_ADC_JSON GitHub secret or a downloaded service-account JSON file.
