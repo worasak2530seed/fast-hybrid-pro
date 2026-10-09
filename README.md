@@ -5,8 +5,10 @@ Research and production execution repository for the Hybrid strategy.
 ## Architecture
 
 **GitHub = source of truth**  
+**Termux = local controller**  
 **Google Colab = execution engine**  
-**GitHub Actions = orchestration and result persistence**
+
+GitHub Actions is not used for routine research execution. The repository workflow is manual-dispatch-only as a legacy fallback; pushing notebook changes must not launch a research run.
 
 Repository: `worasak2530seed/fast-hybrid-pro`
 
@@ -27,9 +29,9 @@ fast-hybrid-pro/
 
 ## Automated execution
 
-The production notebook can be executed on a fresh Google Colab runtime through GitHub Actions.
+Routine research should be initiated from the user's Termux environment and executed on Google Colab, so research runs do not consume GitHub Actions minutes.
 
-The workflow is:
+The legacy workflow is manual-dispatch-only. Do not use it for routine backtests. Its old flow was:
 
 1. GitHub Actions checks out the repository.
 2. The workflow authenticates to Google Cloud/Colab using the `COLAB_ADC_JSON` GitHub Actions secret.
@@ -40,12 +42,7 @@ The workflow is:
 7. The Colab execution log is saved as `results/Fast_Hybrid_Pro_execution_log.ipynb`.
 8. The results are committed back to GitHub.
 
-The workflow supports both:
-
-- manual execution with `workflow_dispatch`
-- automatic execution when `Fast_Hybrid_Pro.ipynb` changes on `main`
-
-There is currently **no scheduled daily run**. This is intentional; no recurring execution has been added.
+Automatic push-triggered execution has been disabled. There is currently **no scheduled daily run**. This is intentional; no recurring execution has been added.
 
 ## Validation principles
 

@@ -11,27 +11,27 @@ The canonical source code and research logic should live in this repository.
 
 ## Execution
 
-Google Colab is the execution environment.
+Google Colab is the execution environment; Termux is the intended local controller.
 
 Recommended flow:
 
-1. Edit/fix canonical code in GitHub.
-2. Open the canonical notebook or runner from GitHub in Colab.
-3. Colab pulls the selected `main` revision.
-4. Run the research/backtest.
-5. Save important source changes back to GitHub.
-6. Record validation results in the repository.
+1. Keep canonical source in GitHub.
+2. Use the existing Termux setup to initiate a Colab runtime directly.
+3. Execute the canonical notebook on Colab, not on GitHub Actions.
+4. Retrieve and inspect the executed notebook and outputs.
+5. Save validated source/results to GitHub only after checks pass.
 
 ## Important boundary
 
 GitHub by itself does not remotely press "Run All" on a private Colab runtime. A separate automation layer is required for fully unattended execution.
 
-Until such an automation layer is deliberately added, this project uses:
+The repository's old Actions workflow is manual-dispatch-only and must not be used for routine research. Pushes to the notebook no longer trigger it.
 
 **GitHub = source of truth**  
+**Termux = local controller**  
 **Colab = execution engine**
 
-No Render, GitLab, CircleCI, or other CI system is part of this workflow.
+No Render, GitLab, CircleCI, or routine GitHub Actions research execution is part of this workflow.
 
 ## Canonical research rules
 
