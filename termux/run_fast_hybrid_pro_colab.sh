@@ -76,7 +76,10 @@ git status --short
 if ! command -v colab >/dev/null 2>&1; then
   log "Google Colab CLI is missing; preparing Termux-compatible dependencies"
   command -v pkg >/dev/null 2>&1 || die "This runner expects Termux's pkg package manager. No package changes were made."
-  pkg install -y python python-pip clang git python-cryptography python-rpds-py python-pyarrow
+  # Keep bootstrap packages to those available in standard Termux repos.
+  # rpds-py and pyarrow are not consistently packaged for Termux; avoid
+  # aborting setup on 'Unable to locate package' for either dependency.
+  pkg install -y python python-pip clang git python-cryptography
   log "Installing Tornado using the Termux-supported build path"
   python -m pip install tornado
   log "Installing the released Colab CLI with Android-compatible wheels"
