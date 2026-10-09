@@ -9,6 +9,11 @@ REPO_URL="https://github.com/worasak2530seed/fast-hybrid-pro.git"
 BASE_DIR="${FAST_HYBRID_HOME:-$HOME/colab-automation}"
 REPO_DIR="${FAST_HYBRID_REPO_DIR:-$BASE_DIR/fast-hybrid-pro}"
 SESSION="fast-hybrid-$(date +%Y%m%d-%H%M%S)"
+LOG_DIR="$BASE_DIR/logs"
+mkdir -p "$LOG_DIR"
+LOG_FILE="$LOG_DIR/fast_hybrid_pro_colab_$(date +%Y%m%d-%H%M%S).log"
+# Keep live terminal output while creating a unique, timestamped log for every run.
+exec > >(tee -a "$LOG_FILE") 2>&1
 SESSION_CREATED=0
 RUN_TMP_DIR=""
 
@@ -144,7 +149,7 @@ log "Checking direct Colab authentication (OAuth2)"
 colab --auth=oauth2 whoami
 
 [ -s Fast_Hybrid_Pro.ipynb ] || die "Canonical notebook is missing."
-grep -q 'CELL 13.7' Fast_Hybrid_Pro.ipynb || die "Canonical notebook does not contain Cell 13.7; refusing to run an outdated source."
+grep -q 'CELL 13.10' Fast_Hybrid_Pro.ipynb || die "Canonical notebook does not contain Cell 13.10; refusing to run an outdated source."
 mkdir -p results
 rm -f Fast_Hybrid_Pro_output.ipynb
 
@@ -191,6 +196,8 @@ markers = {
     "13.5": ["CELL 13.5 PASSED"],
     "13.6": ["CELL 13.6 PASSED"],
     "13.7": ["CELL 13.7 PASSED"],
+    "13.9": ["CELL 13.9 PASSED"],
+    "13.10": ["CELL 13.10 PASSED"],
 }
 found = {key: False for key in markers}
 research_text = []
@@ -232,6 +239,16 @@ for index, cell in enumerate(output_cells):
                 "Promotion gate:", "JOINT_STRATEGY_GATE_", "PRODUCTION_UNCHANGED"
             )
         ))
+    if "CELL 13.9" in cell_source:
+        found["13.9"] = all(m in combined for m in markers["13.9"])
+    if "CELL 13.10" in cell_source:
+        found["13.10"] = all(m in combined for m in markers["13.10"])
+        research_text.extend(line for line in combined.splitlines() if any(
+            phrase in line for phrase in (
+                "Strict internal gate:", "INTERNAL_FILTER_GATE_", "LIMITATION:",
+                "PRODUCTION_UNCHANGED"
+            )
+        ))
 
 if errors:
     print("Notebook errors:")
@@ -257,7 +274,7 @@ Path("results/Fast_Hybrid_Pro_latest.ipynb").write_text(
 )
 print(f"Notebook cells: {len(output_cells)} (matches canonical source)")
 print("Notebook error outputs: 0")
-print("Fresh stress/OOS result markers: Cell 12.34, 13.5, 13.6, 13.7 verified")
+print("Fresh stress/OOS result markers: Cell 12.34, 13.5, 13.6, 13.7, 13.9, 13.10 verified")
 print("Production signal journal: present")
 for line in research_text:
     print(line)
