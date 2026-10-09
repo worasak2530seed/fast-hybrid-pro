@@ -99,7 +99,7 @@ case "$JKC_VERSION" in
     ;;
 esac
 
-colab --version >/dev/null 2>&1 || die "The Colab CLI cannot start. Check its Termux dependencies; no Colab session was created."
+colab version >/dev/null 2>&1 || die "The Colab CLI cannot start. Check its Termux dependencies; no Colab session was created."
 
 # OAuth2 uses the local Colab CLI token cache; it does not need the old
 # COLAB_ADC_JSON GitHub secret or a downloaded service-account JSON file.
