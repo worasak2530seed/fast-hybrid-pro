@@ -55,6 +55,10 @@ case "$origin" in
   *) die "Unexpected origin '$origin'; refusing to run or push to another repository." ;;
 esac
 
+# This exact file is a disposable CLI-generated artifact, never canonical source.
+# Remove only this known temporary output so a previously interrupted run can recover.
+rm -f Fast_Hybrid_Pro_output.ipynb
+
 if [ -n "$(git status --porcelain)" ]; then
   die "The local repository has uncommitted changes. Nothing was overwritten; review them before running."
 fi
