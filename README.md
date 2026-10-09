@@ -100,3 +100,7 @@ The cleanup did not change the frozen Production strategy.
 ## Current operating rule
 
 Prefer verification of the current repository and executed results over assumptions from older research runs. Do not revive archived research branches accidentally.
+
+## Termux diagnostics
+
+For local run logs and optional uploads to a separate private telemetry repository, see [docs/TERMUX_TELEMETRY.md](docs/TERMUX_TELEMETRY.md). Do not publish runtime logs to this source repository: it is public. The telemetry wrapper does not expose a public shell and does not accept remote commands.
