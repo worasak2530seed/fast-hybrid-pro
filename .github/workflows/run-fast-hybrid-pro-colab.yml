@@ -1,11 +1,9 @@
 name: Run Fast Hybrid Pro on Google Colab
 
+# Disabled automatic execution: research runs must be initiated from Termux/Colab.
+# Keep manual dispatch only for explicit emergency use.
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "Fast_Hybrid_Pro.ipynb"
 
 permissions:
   contents: write
