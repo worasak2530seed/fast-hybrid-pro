@@ -83,9 +83,11 @@ if ! command -v colab >/dev/null 2>&1; then
   log "Installing Tornado using the Termux-supported build path"
   python -m pip install tornado
   log "Installing the released Colab CLI with Android-compatible wheels"
+# Install CLI dependencies without the incompatible PyPI kernel-client;
+  # that package pulls jupyter-mimetypes -> pyarrow, unavailable on Termux.
   python -m pip install --only-binary=:all: \
     --extra-index-url https://termux-user-repository.github.io/pypi/ \
-    "google-colab-cli==0.6.0" "jupyter-kernel-client==0.15.0"
+    "google-colab-cli==0.6.0"
   export PATH="$HOME/.local/bin:${PREFIX:-/data/data/com.termux/files/usr}/bin:$PATH"
 fi
 command -v colab >/dev/null 2>&1 || die "The Colab CLI is still unavailable after the Termux-compatible installation. No research run was started."
