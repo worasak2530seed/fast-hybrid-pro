@@ -87,17 +87,43 @@ if ! command -v colab >/dev/null 2>&1; then
 fi
 command -v colab >/dev/null 2>&1 || die "The Colab CLI is still unavailable after the Termux-compatible installation. No research run was started."
 
-# Colab CLI 0.6.0 can break with jupyter-kernel-client 1.x because the kernel
-# client class was renamed. Keep the known-compatible 0.15.0 API on Termux.
-JKC_VERSION="$(python -c 'from importlib.metadata import version; print(version("jupyter-kernel-client"))' 2>/dev/null || true)"
-case "$JKC_VERSION" in
-  1.*)
-    log "Repairing incompatible jupyter-kernel-client $JKC_VERSION for Colab CLI"
-    python -m pip install --only-binary=:all: \
-      --extra-index-url https://termux-user-repository.github.io/pypi/ \
-      "jupyter-kernel-client==0.15.0"
-    ;;
-esac
+# The PyPI jupyter-kernel-client package is not API-compatible with the
+# released Colab CLI on every version. Termux's tested setup uses Google's
+# own fork, pinned to a known commit. Reapply it only when the installed
+# distribution metadata does not already point to that exact commit.
+JKC_COMMIT="f18e982c3265df5e923aa9def101ab3fd737e139"
+JKC_SOURCE="$(python - <<'PY'
+from importlib.metadata import distribution, PackageNotFoundError
+try:
+    dist = distribution("jupyter-kernel-client")
+    print(dist.read_text("direct_url.json") or "")
+except PackageNotFoundError:
+    print("")
+PY
+)"
+if ! printf '%s' "$JKC_SOURCE" | grep -q "$JKC_COMMIT"; then
+  log "Installing the Google Colab-compatible jupyter-kernel-client fork"
+  python -m pip install --no-deps --force-reinstall \
+    "git+https://github.com/googlecolab/jupyter-kernel-client.git@$JKC_COMMIT"
+fi
+
+python - <<'PY'
+import sys
+try:
+    import jupyter_kernel_client as jkc
+    from jupyter_kernel_client import wsclient
+except Exception as exc:
+    raise SystemExit(f"Cannot import jupyter-kernel-client: {exc}")
+required = {
+    "KernelClient": hasattr(jkc, "KernelClient"),
+    "JupyterSubprotocol": hasattr(jkc, "JupyterSubprotocol"),
+    "wsclient.deserialize_msg_from_ws_default": hasattr(wsclient, "deserialize_msg_from_ws_default"),
+}
+missing = [name for name, present in required.items() if not present]
+if missing:
+    raise SystemExit("Incompatible jupyter-kernel-client API; missing: " + ", ".join(missing))
+print("COLAB_KERNEL_CLIENT_API_OK")
+PY
 
 colab version >/dev/null 2>&1 || die "The Colab CLI cannot start. Check its Termux dependencies; no Colab session was created."
 
