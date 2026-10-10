@@ -1,0 +1,65 @@
+Fast Hybrid Pro — recovered diagnostic report
+Note: reconstructed from an existing local log; the notebook was NOT rerun.
+Report created: 2026-10-10T16:41:09+07:00
+Source log filename: fast_hybrid_pro_colab_20261010-161344.log
+
+Selected diagnostics:
+ERROR:yfinance:HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ACAP.BK"}}}
+ERROR:yfinance:
+ERROR:yfinance:['ACAP.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR:yfinance:HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BLISS.BK"}}}
+ERROR:yfinance:
+ERROR:yfinance:['BLISS.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR:yfinance:
+ERROR:yfinance:['GSTEEL.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR:yfinance:
+ERROR:yfinance:['WELL.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+REALISTIC_FRICTION_DOES_NOT_SURVIVE
+PRODUCTION_UNCHANGED
+CELL 13.0 PASSED
+PRODUCTION_UNCHANGED
+CELL 13.1 PASSED
+PRODUCTION_UNCHANGED
+CELL 13.2 PASSED
+PRODUCTION_UNCHANGED
+CELL 13.3 PASSED
+REGIME_FILTER_GATE_PASS
+PRODUCTION_UNCHANGED
+CELL 13.4 PASSED
+PRODUCTION_UNCHANGED
+CELL 13.5 PASSED
+PRODUCTION_UNCHANGED
+CELL 13.6 PASSED
+JOINT_STRATEGY_GATE_FAIL
+PRODUCTION_UNCHANGED
+CELL 13.7 PASSED
+CELL 13.8 PASSED
+CELL 13.9 PASSED
+Strict internal gate: 0/3 folds beat baseline, PF > 1, and have >= 25 trades.
+INTERNAL_FILTER_GATE_FAIL — NO FILTER PROMOTION.
+PRODUCTION_UNCHANGED
+CELL 13.10 PASSED
+Strict internal gate: 0/3 folds improve P&L vs BASE, have PF > 1, and >= 25 trades.
+PARTIAL_PROFIT_GATE_FAIL — no policy promotion.
+PRODUCTION_UNCHANGED
+CELL 13.11 PASSED
+Notebook cells: 35 (matches canonical source)
+Notebook error outputs: 0
+Fresh stress/OOS result markers: Cell 12.34, 13.5, 13.6, 13.7, 13.9, 13.10, 13.11 verified
+Production signal journal: present
+REALISTIC_FRICTION_DOES_NOT_SURVIVE
+JOINT_STRATEGY_GATE_FAIL
+PRODUCTION_UNCHANGED
+Strict internal gate: 0/3 folds beat baseline, PF > 1, and have >= 25 trades.
+INTERNAL_FILTER_GATE_FAIL — NO FILTER PROMOTION.
+PRODUCTION_UNCHANGED
+Strict internal gate: 0/3 folds improve P&L vs BASE, have PF > 1, and >= 25 trades.
+PARTIAL_PROFIT_GATE_FAIL — no policy promotion.
+PRODUCTION_UNCHANGED
+COLAB_RUN_VALIDATED
+[2026-10-10 16:28:54 +07] RUN COMPLETE — Colab was the execution engine; GitHub Actions was not used.
+Traceback (most recent call last):
+ModuleNotFoundError: No module named 'tzdata'
+Traceback (most recent call last):
+    raise ZoneInfoNotFoundError(f"No time zone found with key {key}")
+zoneinfo._common.ZoneInfoNotFoundError: 'No time zone found with key Asia/Bangkok'
