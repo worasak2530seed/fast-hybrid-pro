@@ -48,7 +48,6 @@ import re
 import sys
 from datetime import datetime
 from pathlib import Path
-from zoneinfo import ZoneInfo
 
 log_path, report_path, exit_code, source_commit = sys.argv[1:]
 text = Path(log_path).read_text(encoding="utf-8", errors="replace")
@@ -79,7 +78,7 @@ for line in text.splitlines():
         line = re.sub(r"ya29\.[A-Za-z0-9._-]+", "[REDACTED_TOKEN]", line)
         selected.append(line[:400])
 selected = selected[-60:]
-now = datetime.now(ZoneInfo("Asia/Bangkok")).isoformat(timespec="seconds")
+now = datetime.now().astimezone().isoformat(timespec="seconds")
 status = "SUCCESS" if exit_code == "0" else "FAILED"
 body = [
     "Fast Hybrid Pro Termux → Google Colab run report",
