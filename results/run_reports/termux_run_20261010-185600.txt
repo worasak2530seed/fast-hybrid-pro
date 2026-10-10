@@ -1,0 +1,41 @@
+Fast Hybrid Pro Termux → Google Colab run report
+Status: SUCCESS
+Exit code: 0
+Timestamp (Asia/Bangkok): 2026-10-10T18:56:02+07:00
+Source commit at run start: c8b89e4ffbe2ba77be64f5dc73f376d42452716c
+Execution engine: Google Colab via Termux CLI
+Raw logs are intentionally not uploaded.
+
+Selected validation and diagnostic lines:
+ERROR:yfinance:HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ACAP.BK"}}}
+ERROR:yfinance:
+ERROR:yfinance:['ACAP.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR:yfinance:HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BLISS.BK"}}}
+ERROR:yfinance:
+ERROR:yfinance:['BLISS.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR:yfinance:
+ERROR:yfinance:['GSTEEL.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR:yfinance:
+ERROR:yfinance:['WELL.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+REALISTIC_FRICTION_DOES_NOT_SURVIVE
+JOINT_STRATEGY_GATE_FAIL
+Strict internal gate: 0/3 folds beat baseline, PF > 1, and have >= 25 trades.
+INTERNAL_FILTER_GATE_FAIL — NO FILTER PROMOTION.
+Strict internal gate: 0/3 folds improve P&L vs BASE, have PF > 1, and >= 25 trades.
+PARTIAL_PROFIT_GATE_FAIL — no policy promotion.
+MACD_BOTH_CONFIGS_TESTED: 4/12/9 and 6/13/5.
+FULL_HISTORY_DIAGNOSTIC_ONLY — chronological OOS confirmation required before any promotion.
+CELL 13.13 PASSED
+Notebook cells: 37 (matches canonical source)
+Notebook error outputs: 0
+Production signal journal: present
+REALISTIC_FRICTION_DOES_NOT_SURVIVE
+JOINT_STRATEGY_GATE_FAIL
+Strict internal gate: 0/3 folds beat baseline, PF > 1, and have >= 25 trades.
+INTERNAL_FILTER_GATE_FAIL — NO FILTER PROMOTION.
+Strict internal gate: 0/3 folds improve P&L vs BASE, have PF > 1, and >= 25 trades.
+PARTIAL_PROFIT_GATE_FAIL — no policy promotion.
+MACD_BOTH_CONFIGS_TESTED: 4/12/9 and 6/13/5.
+FULL_HISTORY_DIAGNOSTIC_ONLY — chronological OOS confirmation required before any promotion.
+COLAB_RUN_VALIDATED
+[2026-10-10 18:55:55 +07] RUN COMPLETE — Colab was the execution engine; GitHub Actions was not used.
