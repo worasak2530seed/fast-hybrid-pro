@@ -1,0 +1,21 @@
+Fast Hybrid Pro Termux → Google Colab run report
+Status: FAILED
+Exit code: 1
+Timestamp (Asia/Bangkok): 2026-10-10T18:07:34+07:00
+Source commit at run start: 402d5ef5035b6c5ccf316bd1f6d4e8d9f8b926ce
+Execution engine: Google Colab via Termux CLI
+Raw logs are intentionally not uploaded.
+
+Selected validation and diagnostic lines:
+ERROR:yfinance:HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ACAP.BK"}}}
+ERROR:yfinance:
+ERROR:yfinance:['ACAP.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR:yfinance:HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BLISS.BK"}}}
+ERROR:yfinance:
+ERROR:yfinance:['BLISS.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR:yfinance:
+ERROR:yfinance:['GSTEEL.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR:yfinance:
+ERROR:yfinance:['WELL.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+REALISTIC_FRICTION_DOES_NOT_SURVIVE
+RuntimeError: Connection was lost.
