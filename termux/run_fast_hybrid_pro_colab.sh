@@ -12,16 +12,22 @@ SESSION="fast-hybrid-$(date +%Y%m%d-%H%M%S)"
 LOG_DIR="$BASE_DIR/logs"
 mkdir -p "$LOG_DIR"
 LOG_FILE="$LOG_DIR/fast_hybrid_pro_colab_$(date +%Y%m%d-%H%M%S).log"
+# Keep a copy of the original terminal so the final report is shown outside the log tee.
+exec 3>&1 4>&2
 # Keep live terminal output while creating a unique, timestamped log for every run.
 exec > >(tee -a "$LOG_FILE") 2>&1
 SESSION_CREATED=0
 RUN_TMP_DIR=""
+REPORT_REPO_READY=0
+RUN_START_COMMIT=""
 
 log() { printf '\n[%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S %Z')" "$*"; }
 die() { printf '\nERROR: %s\n' "$*" >&2; exit 1; }
 
 cleanup() {
   rc=$?
+  trap - EXIT
+  set +e
   if [ "$SESSION_CREATED" -eq 1 ]; then
     log "Stopping Colab session $SESSION"
     colab --auth=oauth2 stop -s "$SESSION" || true
@@ -30,6 +36,95 @@ cleanup() {
     rm -f "$RUN_TMP_DIR/Fast_Hybrid_Pro_execution_log.ipynb" "$RUN_TMP_DIR/production_signal_journal.csv"
     rmdir "$RUN_TMP_DIR" 2>/dev/null || true
   fi
+
+  # Publish a compact, redacted report to GitHub after the repository has been
+  # safely synchronized. Never upload the raw log or credentials.
+  REPORT_PATH=""
+  if [ "$REPORT_REPO_READY" -eq 1 ] && [ -d "$REPO_DIR/.git" ]; then
+    REPORT_PATH="results/run_reports/termux_run_$(date +%Y%m%d-%H%M%S).txt"
+    mkdir -p "$REPO_DIR/results/run_reports"
+    python - "$LOG_FILE" "$REPORT_PATH" "$rc" "$RUN_START_COMMIT" <<'PYREPORT'
+import re
+import sys
+from datetime import datetime
+from pathlib import Path
+from zoneinfo import ZoneInfo
+
+log_path, report_path, exit_code, source_commit = sys.argv[1:]
+text = Path(log_path).read_text(encoding="utf-8", errors="replace")
+patterns = [
+    r"ERROR:.*",
+    r".*NOTEBOOK_VALIDATION_FAILED.*",
+    r".*CELL_COUNT_MISMATCH.*",
+    r".*Required fresh research output missing.*",
+    r".*Notebook errors:.*",
+    r".*COLAB_RUN_VALIDATED.*",
+    r".*Notebook cells:.*",
+    r".*Notebook error outputs:.*",
+    r".*Fresh stress/OOS result markers:.*",
+    r".*Production signal journal:.*",
+    r".*Strict internal gate:.*",
+    r".*PARTIAL_PROFIT_GATE_.*",
+    r".*INTERNAL_FILTER_GATE_.*",
+    r".*JOINT_STRATEGY_GATE_.*",
+    r".*REALISTIC_FRICTION_.*",
+    r".*RUN COMPLETE.*",
+]
+selected = []
+for line in text.splitlines():
+    if any(re.search(pattern, line, re.IGNORECASE) for pattern in patterns):
+        # Scrub common credential formats and personal identifiers before publishing.
+        line = re.sub(r"(?i)(token|password|secret|authorization)(\s*[:=]\s*)\S+", r"\1\2[REDACTED]", line)
+        line = re.sub(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", "[REDACTED_EMAIL]", line)
+        line = re.sub(r"ya29\.[A-Za-z0-9._-]+", "[REDACTED_TOKEN]", line)
+        selected.append(line[:400])
+selected = selected[-60:]
+now = datetime.now(ZoneInfo("Asia/Bangkok")).isoformat(timespec="seconds")
+status = "SUCCESS" if exit_code == "0" else "FAILED"
+body = [
+    "Fast Hybrid Pro Termux → Google Colab run report",
+    f"Status: {status}",
+    f"Exit code: {exit_code}",
+    f"Timestamp (Asia/Bangkok): {now}",
+    f"Source commit at run start: {source_commit or 'unknown'}",
+    "Execution engine: Google Colab via Termux CLI",
+    "Raw logs are intentionally not uploaded.",
+    "",
+    "Selected validation and diagnostic lines:",
+    *(selected or ["No recognized validation/error markers were captured. Check the local log path printed by the runner."]),
+    "",
+]
+Path(report_path).write_text("\n".join(body), encoding="utf-8")
+PYREPORT
+    if [ -f "$REPORT_PATH" ]; then
+      git -C "$REPO_DIR" add "$REPORT_PATH"
+      if ! git -C "$REPO_DIR" diff --cached --quiet; then
+        git -C "$REPO_DIR" config user.name "Fast Hybrid Pro Termux Runner"
+        git -C "$REPO_DIR" config user.email "worasak2530seed@users.noreply.github.com"
+        git -C "$REPO_DIR" commit -m "ops: publish Termux run report $(date +%Y-%m-%d)"
+        git -C "$REPO_DIR" push origin main
+        REPORT_PUSH_STATUS="PUBLISHED"
+      else
+        REPORT_PUSH_STATUS="UNCHANGED"
+      fi
+    else
+      REPORT_PUSH_STATUS="NOT_CREATED"
+    fi
+  else
+    REPORT_PUSH_STATUS="NOT_PUBLISHED_REPOSITORY_NOT_READY"
+  fi
+
+  printf '\\n===== FAST HYBRID PRO RUN REPORT =====\\n' >&3
+  printf 'RUNNER_EXIT_CODE=%s\\n' "$rc" >&3
+  printf 'LOG_FILE=%s\\n' "$LOG_FILE" >&3
+  printf 'GITHUB_REPORT_STATUS=%s\\n' "$REPORT_PUSH_STATUS" >&3
+  if [ -n "$REPORT_PATH" ]; then
+    printf 'GITHUB_REPORT_PATH=%s\\n' "$REPORT_PATH" >&3
+    printf 'GITHUB_REPORT_URL=https://github.com/worasak2530seed/fast-hybrid-pro/blob/main/%s\\n' "$REPORT_PATH" >&3
+  fi
+  printf '===== LAST 45 LOCAL LOG LINES =====\\n' >&3
+  tail -n 45 "$LOG_FILE" >&3
+  printf '===== END RUN REPORT =====\\n' >&3
   exit "$rc"
 }
 trap cleanup EXIT
@@ -76,6 +171,8 @@ fi
 git checkout main
 git fetch origin main
 git pull --ff-only origin main
+RUN_START_COMMIT="$(git rev-parse HEAD)"
+REPORT_REPO_READY=1
 git status --short
 
 if ! command -v colab >/dev/null 2>&1; then
