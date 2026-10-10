@@ -1,0 +1,29 @@
+FAST HYBRID PRO — LATEST TERMUX/COLAB RUN
+Report generated: 2026-10-10 18:07:36 +0700
+Runner exit code: 1
+Log file: fast_hybrid_pro_colab_20261010-171732.log
+Current commit: 7dee3af
+
+===== RESEARCH RESULTS / VALIDATION =====
+ERROR:yfinance:HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ACAP.BK"}}}
+ERROR:yfinance:
+ERROR:yfinance:['ACAP.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR:yfinance:HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BLISS.BK"}}}
+ERROR:yfinance:
+ERROR:yfinance:['BLISS.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR:yfinance:
+ERROR:yfinance:['GSTEEL.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR:yfinance:
+ERROR:yfinance:['WELL.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+Realistic P&L   : -72,611.81 THB
+Realistic PF    : 0.600
+Realistic MaxDD : -77.70%
+REALISTIC_FRICTION_DOES_NOT_SURVIVE
+PRODUCTION_UNCHANGED
+PRODUCTION_UNCHANGED
+PRODUCTION_UNCHANGED
+PRODUCTION_UNCHANGED
+PRODUCTION_UNCHANGED
+╭─────── Traceback (most recent call last) ───────╮
+
+===== END OF REPORT =====
