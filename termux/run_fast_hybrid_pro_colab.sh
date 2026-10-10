@@ -64,6 +64,9 @@ patterns = [
     r".*Production signal journal:.*",
     r".*Strict internal gate:.*",
     r".*PARTIAL_PROFIT_GATE_.*",
+    r".*CELL 13.13 PASSED.*",
+    r".*MACD_BOTH_CONFIGS_TESTED.*",
+    r".*FULL_HISTORY_DIAGNOSTIC_ONLY.*",
     r".*INTERNAL_FILTER_GATE_.*",
     r".*JOINT_STRATEGY_GATE_.*",
     r".*REALISTIC_FRICTION_.*",
@@ -246,6 +249,7 @@ colab --auth=oauth2 whoami
 
 [ -s Fast_Hybrid_Pro.ipynb ] || die "Canonical notebook is missing."
 grep -q 'CELL 13.10' Fast_Hybrid_Pro.ipynb || die "Canonical notebook does not contain Cell 13.10; refusing to run an outdated source."
+grep -q 'CELL 13.13' Fast_Hybrid_Pro.ipynb || die "Canonical notebook does not contain Cell 13.13; refusing to run without the trend/MACD/stop ablation."
 mkdir -p results
 rm -f Fast_Hybrid_Pro_output.ipynb
 
@@ -296,6 +300,7 @@ markers = {
     "13.10": ["CELL 13.10 PASSED"],
     "13.11": ["CELL 13.11 PASSED"],
     "13.12": ["RISK_CAPACITY_SENSITIVITY_COMPLETE", "PRODUCTION_UNCHANGED", "CELL 13.12 PASSED"],
+    "13.13": ["MACD_BOTH_CONFIGS_TESTED", "FULL_HISTORY_DIAGNOSTIC_ONLY", "PRODUCTION_UNCHANGED", "CELL 13.13 PASSED"],
 }
 found = {key: False for key in markers}
 research_text = []
@@ -364,6 +369,15 @@ for index, cell in enumerate(output_cells):
                 "PRODUCTION_UNCHANGED"
             )
         ))
+    if "CELL 13.13" in cell_source:
+        found["13.13"] = all(m in combined for m in markers["13.13"])
+        research_text.extend(line for line in combined.splitlines() if any(
+            phrase in line for phrase in (
+                "BASELINE strict/4-12-9/hybrid", "Top full-history diagnostic",
+                "ATR_SCOPE:", "MACD_BOTH_CONFIGS_TESTED",
+                "FULL_HISTORY_DIAGNOSTIC_ONLY", "PRODUCTION_UNCHANGED"
+            )
+        ))
 
 if errors:
     print("Notebook errors:")
@@ -389,7 +403,7 @@ Path("results/Fast_Hybrid_Pro_latest.ipynb").write_text(
 )
 print(f"Notebook cells: {len(output_cells)} (matches canonical source)")
 print("Notebook error outputs: 0")
-print("Fresh stress/OOS result markers: Cell 12.34, 13.5, 13.6, 13.7, 13.9, 13.10, 13.11 verified")
+print("Fresh stress/OOS/research result markers: Cell 12.34, 13.5–13.13 verified")
 print("Production signal journal: present")
 for line in research_text:
     print(line)
