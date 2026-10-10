@@ -1,0 +1,26 @@
+Fast Hybrid Pro Termux → Google Colab run report
+Status: FAILED
+Exit code: 1
+Timestamp (Asia/Bangkok): 2026-10-10T22:22:38+07:00
+Source commit at run start: 97235335d7974717d7d02d94f710cffd581441ab
+Execution engine: Google Colab via Termux CLI
+Raw logs are intentionally not uploaded.
+
+Selected validation and diagnostic lines:
+ERROR:yfinance:HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ACAP.BK"}}}
+ERROR:yfinance:
+ERROR:yfinance:['ACAP.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR:yfinance:HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BLISS.BK"}}}
+ERROR:yfinance:
+ERROR:yfinance:['BLISS.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR:yfinance:
+ERROR:yfinance:['GSTEEL.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+ERROR:yfinance:
+ERROR:yfinance:['WELL.BK']: YFPricesMissingError('possibly delisted; no price data found  (period=3mo) (Yahoo error = "No data found, symbol may be delisted")')
+REALISTIC_FRICTION_DOES_NOT_SURVIVE
+JOINT_STRATEGY_GATE_FAIL
+Strict internal gate: 0/3 folds beat baseline, PF > 1, and have >= 25 trades.
+INTERNAL_FILTER_GATE_FAIL — NO FILTER PROMOTION.
+Strict internal gate: 0/3 folds improve P&L vs BASE, have PF > 1, and >= 25 trades.
+PARTIAL_PROFIT_GATE_FAIL — no policy promotion.
+RuntimeError: Connection was lost.
