@@ -114,17 +114,17 @@ PYREPORT
     REPORT_PUSH_STATUS="NOT_PUBLISHED_REPOSITORY_NOT_READY"
   fi
 
-  printf '\\n===== FAST HYBRID PRO RUN REPORT =====\\n' >&3
-  printf 'RUNNER_EXIT_CODE=%s\\n' "$rc" >&3
-  printf 'LOG_FILE=%s\\n' "$LOG_FILE" >&3
-  printf 'GITHUB_REPORT_STATUS=%s\\n' "$REPORT_PUSH_STATUS" >&3
+  printf '\n===== FAST HYBRID PRO RUN REPORT =====\n' >&3
+  printf 'RUNNER_EXIT_CODE=%s\n' "$rc" >&3
+  printf 'LOG_FILE=%s\n' "$LOG_FILE" >&3
+  printf 'GITHUB_REPORT_STATUS=%s\n' "$REPORT_PUSH_STATUS" >&3
   if [ -n "$REPORT_PATH" ]; then
-    printf 'GITHUB_REPORT_PATH=%s\\n' "$REPORT_PATH" >&3
-    printf 'GITHUB_REPORT_URL=https://github.com/worasak2530seed/fast-hybrid-pro/blob/main/%s\\n' "$REPORT_PATH" >&3
+    printf 'GITHUB_REPORT_PATH=%s\n' "$REPORT_PATH" >&3
+    printf 'GITHUB_REPORT_URL=https://github.com/worasak2530seed/fast-hybrid-pro/blob/main/%s\n' "$REPORT_PATH" >&3
   fi
-  printf '===== LAST 45 LOCAL LOG LINES =====\\n' >&3
+  printf '===== LAST 45 LOCAL LOG LINES =====\n' >&3
   tail -n 45 "$LOG_FILE" >&3
-  printf '===== END RUN REPORT =====\\n' >&3
+  printf '===== END RUN REPORT =====\n' >&3
   exit "$rc"
 }
 trap cleanup EXIT
