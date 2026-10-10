@@ -198,6 +198,7 @@ markers = {
     "13.7": ["CELL 13.7 PASSED"],
     "13.9": ["CELL 13.9 PASSED"],
     "13.10": ["CELL 13.10 PASSED"],
+    "13.11": ["CELL 13.11 PASSED"],
 }
 found = {key: False for key in markers}
 research_text = []
@@ -249,6 +250,14 @@ for index, cell in enumerate(output_cells):
                 "PRODUCTION_UNCHANGED"
             )
         ))
+    if "CELL 13.11" in cell_source:
+        found["13.11"] = all(m in combined for m in markers["13.11"])
+        research_text.extend(line for line in combined.splitlines() if any(
+            phrase in line for phrase in (
+                "Strict internal gate:", "PARTIAL_PROFIT_GATE_", "LIMITATION:",
+                "PRODUCTION_UNCHANGED"
+            )
+        ))
 
 if errors:
     print("Notebook errors:")
@@ -274,7 +283,7 @@ Path("results/Fast_Hybrid_Pro_latest.ipynb").write_text(
 )
 print(f"Notebook cells: {len(output_cells)} (matches canonical source)")
 print("Notebook error outputs: 0")
-print("Fresh stress/OOS result markers: Cell 12.34, 13.5, 13.6, 13.7, 13.9, 13.10 verified")
+print("Fresh stress/OOS result markers: Cell 12.34, 13.5, 13.6, 13.7, 13.9, 13.10, 13.11 verified")
 print("Production signal journal: present")
 for line in research_text:
     print(line)
