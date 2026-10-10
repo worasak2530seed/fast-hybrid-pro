@@ -295,6 +295,7 @@ markers = {
     "13.9": ["CELL 13.9 PASSED"],
     "13.10": ["CELL 13.10 PASSED"],
     "13.11": ["CELL 13.11 PASSED"],
+    "13.12": ["RISK_CAPACITY_SENSITIVITY_COMPLETE", "PRODUCTION_UNCHANGED", "CELL 13.12 PASSED"],
 }
 found = {key: False for key in markers}
 research_text = []
@@ -351,6 +352,15 @@ for index, cell in enumerate(output_cells):
         research_text.extend(line for line in combined.splitlines() if any(
             phrase in line for phrase in (
                 "Strict internal gate:", "PARTIAL_PROFIT_GATE_", "LIMITATION:",
+                "PRODUCTION_UNCHANGED"
+            )
+        ))
+    if "CELL 13.12" in cell_source:
+        found["13.12"] = all(m in combined for m in markers["13.12"])
+        research_text.extend(line for line in combined.splitlines() if any(
+            phrase in line for phrase in (
+                "Highest in-sample net P&L configuration",
+                "SENSITIVITY_ONLY", "RISK_CAPACITY_SENSITIVITY_COMPLETE",
                 "PRODUCTION_UNCHANGED"
             )
         ))
