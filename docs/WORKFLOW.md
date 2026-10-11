@@ -1,50 +1,45 @@
-# Fast Hybrid Pro — Canonical Workflow
+# Fast Hybrid Pro — Direct Colab Workflow
 
-## Source of truth
+## Roles
 
-- Repository: `worasak2530seed/fast-hybrid-pro`
-- Default branch: `main`
-- GitHub stores canonical code and validated run artifacts.
-- Termux is the local controller.
-- Google Colab is the execution engine.
+- **GitHub:** canonical source and validated structured result artifacts.
+- **Google Colab:** the only environment used to run the research notebook.
+- **Termux:** watches the published GitHub status and sends Telegram notifications only.
 
-## Supported routine runner
+## One-time Colab setup
 
-Use the complete script at `termux/run_fast_hybrid_pro_colab.sh`. The script:
+1. Open the canonical notebook:
+   https://colab.research.google.com/github/worasak2530seed/fast-hybrid-pro/blob/main/Fast_Hybrid_Pro.ipynb
+2. In Colab Secrets, create `FAST_HYBRID_GITHUB_TOKEN` using a fine-grained token restricted to `worasak2530seed/fast-hybrid-pro`, with **Contents: Read and write** permission. Enable notebook access for that secret.
+3. Do not print, paste into a code cell, or commit the token. The notebook retrieves it from Colab Secrets.
+4. Use **Runtime → Run all**.
 
-1. Checks the existing Termux GitHub CLI login and configures Git's credential helper.
-2. Clones or fast-forward-updates the canonical `main` branch without overwriting local modifications.
-3. Installs the official Google Colab CLI if it is missing.
-4. Uses the Colab CLI's local OAuth2 login/cache; no downloaded service-account JSON or `COLAB_ADC_JSON` GitHub secret is needed for this local path.
-5. Creates a fresh CPU Colab session and uploads the existing production signal journal.
-6. Runs the complete canonical notebook on Colab.
-7. Checks notebook JSON, matching source/output cell counts, absence of code-cell errors, and required fresh outputs from Cell 12.34 and Cells 13.5, 13.6, and 13.7.
-8. Downloads the updated journal and session log.
-9. Pushes result files to `main` only after every validation passes.
-10. Stops the Colab session on exit, including error exits.
+## Run lifecycle
 
-A validated run can be started from Termux with:
+1. The first code cell validates GitHub access and publishes `results/run_reports/latest_run_status.json` with status `RUNNING`. If credentials are missing or GitHub write access is unavailable, execution stops before research begins.
+2. A post-cell error handler attempts to publish `FAILED` with a short redacted error summary.
+3. The final cell runs only after prior cells have completed without errors. It publishes a run-specific JSON summary and updates `latest_run_summary.json`.
+4. Available CSV artifacts include True Global Portfolio stress results and trades, risk/capacity sensitivity, loss attribution, nested OOS filters, partial-profit OOS, trend/MACD/stop ablation, MACD lead/warning event-study summary and shortlist, and the production signal journal.
+5. Status becomes `SUCCESS` only after the report artifacts have been published. Research diagnostics do not automatically modify Production settings.
+
+The Colab runtime cannot directly read the browser's saved interactive notebook file, so the structured reports and CSVs are published automatically; use Colab's Drive save option if a fully rendered notebook copy is also required.
+
+## Termux notification watcher
+
+Run:
 
 ```bash
-mkdir -p ~/colab-automation
-curl -fsSL https://raw.githubusercontent.com/worasak2530seed/fast-hybrid-pro/main/termux/run_fast_hybrid_pro_colab.sh -o ~/colab-automation/run_fast_hybrid_pro_colab.sh
-bash ~/colab-automation/run_fast_hybrid_pro_colab.sh
+bash "$HOME/colab-automation/fast-hybrid-pro/termux/watch_colab_status.sh"
 ```
 
-The first direct Colab CLI OAuth2 login may ask the user to visit a Google URL and paste a one-time verification code. The token is cached locally by the CLI. This is an authentication consent step, not a research step. Do not put the token or credential files in GitHub.
+Leave it running while Colab executes. It polls GitHub every 30 seconds and sends one Telegram message per run state (RUNNING, SUCCESS, FAILED), using the existing `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` environment variables. It does not launch a notebook, run research, or push results.
 
-## GitHub Actions boundary
+For backward compatibility, `termux/run_fast_hybrid_pro_colab.sh` now delegates to this watcher only.
 
-The legacy workflow at `.github/workflows/run-fast-hybrid-pro-colab.yml` is manual-dispatch-only. Do not use it for routine research, and do not enable push triggers. The Termux script does not dispatch Actions.
+## Safety and research integrity
 
-## Research integrity
-
-- No look-ahead bias.
-- Explicit chronological train/validation/test separation.
-- Portfolio capital and overlap constraints are audited.
-- Trade-data integrity is checked before aggregation.
-- Stress tests and optimization remain separate.
-- Daily trading-date labels are normalized to `Asia/Bangkok`; naive exchange-date labels must not be shifted from UTC.
-- Holding-period limits are measured in exchange trading sessions, not calendar days.
-- Production parameters stay frozen unless a robust OOS promotion gate passes and the user approves promotion.
-- Archived Cells 12.5–12.31 are historical only and must not be revived automatically.
+- Never run the research notebook from Termux.
+- Do not use GitHub Actions for routine research execution.
+- Do not promote exploratory full-history results as independent OOS evidence.
+- Preserve chronological splits, capital/overlap constraints, realistic costs, slippage, and gap-loss stress.
+- Keep Production parameters frozen unless the predefined OOS promotion gate passes and the user explicitly approves a change.
