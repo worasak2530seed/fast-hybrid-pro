@@ -4,10 +4,11 @@ export TZ="Asia/Bangkok"
 
 REPO="worasak2530seed/fast-hybrid-pro"
 POLL_SECONDS="${FAST_HYBRID_POLL_SECONDS:-30}"
-BASE_DIR="${FAST_HYBRID_HOME:-$HOME/colab-automation}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+BASE_DIR="${FAST_HYBRID_HOME:-$(dirname "$REPO_DIR")}"
 STATE_DIR="$BASE_DIR/state"
 STATE_FILE="$STATE_DIR/last_colab_notification"
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 STATUS_API="repos/$REPO/contents/results/run_reports/latest_run_status.json"
 
 mkdir -p "$STATE_DIR"
