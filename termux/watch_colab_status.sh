@@ -49,6 +49,13 @@ except Exception:
       key="${run_id}:${status}"
       last_key="$(cat "$STATE_FILE" 2>/dev/null || true)"
 
+      # On first startup, silently remember an old terminal state so the user
+      # does not receive a misleading notification about a run that already ended.
+      if [ ! -f "$STATE_FILE" ] && [ -n "$run_id" ] && [ "$status" != "RUNNING" ]; then
+        printf '%s' "$key" > "$STATE_FILE"
+        last_key="$key"
+      fi
+
       if [ -n "$run_id" ] && [ "$key" != "$last_key" ]; then
         case "$status" in
           RUNNING)
