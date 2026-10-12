@@ -35,12 +35,22 @@ The new Cell 13.15 evaluates these predeclared candidates under the same trend, 
 
 A candidate is not promoted because it has the best full-history P&L. A credible candidate must show positive net returns after costs across untouched chronological folds, acceptable drawdown and trade count, stability in nearby parameters, and a clear improvement over the same-engine baseline. Since the prior nested OOS filters and partial-profit tests failed, the burden of proof is high.
 
-## Data sources and limitations
+## Data sources policy — FREE ONLY
 
-- **Current source: Yahoo Finance via yfinance.** Convenient and reproducible, but not an official SET historical database; ticker coverage, adjustments, delistings, and historical symbol mapping must be audited.
-- **Primary Thai-market alternative: SET SMART Marketplace / SETSMART.** SET describes SMART Marketplace as an API-accessible service for SET/TFEX real-time/delayed, end-of-day/historical, and historical intraday data. SETSMART for Investor is listed with five years of historical data at THB 250/month; corporate/API access and deeper history may cost substantially more. For the current product and licensing details, check the official pages before purchase. Use this as the preferred independent cross-check if an authorized API entitlement or an export file is available: https://www.set.or.th/th/services/connectivity-and-data/data/smart-marketplace and https://www.set.or.th/en/services/connectivity-and-data/data/web-based
-- **SET historical data request service.** The exchange lists security trading statistics back to 30 April 1975 and corporate-action/company data series, subject to data request and product terms: https://www.set.or.th/en/services/connectivity-and-data/data/data-request
-- **Do not silently mix data vendors.** Before comparing strategy results, align exchange calendar, adjusted/unadjusted prices, corporate actions, symbol changes, delisted names, timezone, and missing bars. Store vendor/source metadata and compare overlapping OHLCV bars.
-- **Survivorship and point-in-time fundamentals remain material.** The current market-cap snapshot is not a historical point-in-time market-cap series. An authoritative historical-price feed alone does not remove survivorship bias; historical constituents and market-cap snapshots are also required.
+**User decision (2026-10-12): do not use paid data services.** SETSMART, SMART Marketplace, paid historical-data requests, and any paid API/subscription must not be used or added as a dependency.
 
-No private or subscription database was queried from this environment. The current research step uses public paper metadata/full-text excerpts and adds a reproducible candidate test to run against the existing Colab data. It does not claim an independent SETSMART download without credentials.
+### Allowed research path
+
+1. **Yahoo Finance through yfinance remains the primary free runtime feed** for the current project, subject to the provider's availability, terms, ticker coverage and data-quality limits. This is not an official SET feed.
+2. **Free independent-source candidate: Alpha Vantage free API.** It offers a free key and documents global daily series, but its free plan is limited (currently 25 API requests/day for ordinary use) and Thai SET ticker coverage for our exact `.BK` universe has not been verified. It must not be integrated into the backtest until a small availability test confirms symbols, sufficient historical depth, OHLCV fields, adjustment semantics and licensing. See https://www.alphavantage.co/documentation/ and https://www.alphavantage.co/support/.
+3. **Public official SET pages** may be used for manual spot checks and publicly displayed facts where access is free, but do not assume bulk historical OHLCV or automated API access is free. Do not scrape around login, access controls, or payment gates.
+4. **Free downloaded files from a source with clear lawful access** may be added as a separate, versioned dataset. Record provider, retrieval date, symbols, date range, adjustments, timezone, missing bars, and a file checksum.
+
+### Data validation requirements before adding a second source
+
+- First perform a low-volume availability probe on only a few symbols. Do not spend the daily API quota across all tickers before confirming support.
+- Compare overlapping dates for OHLCV, missing sessions, duplicates, corporate-action adjustments, and extreme differences. Do not combine feeds silently or splice price series without documenting the rule.
+- Keep the existing Yahoo-only baseline reproducible; any alternate-source result must be labelled separately.
+- Survivorship bias remains material: current symbol lists and current market-cap screens do not reconstruct historical constituents or point-in-time fundamentals. A second free price feed does not solve that problem by itself.
+
+No paid source was queried. No independent provider has yet passed a real OHLCV cross-check. The current notebook uses the existing Yahoo Finance data and the literature-inspired parameter grid is research-only. Do not claim a second source has validated performance until the probe and overlap audit have actually run.
