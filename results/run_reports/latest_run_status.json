@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "run_id": "20261012T022251Z-f74342af",
-  "status": "FAILED",
-  "started_at_utc": "2026-10-12T02:22:51+00:00",
-  "updated_at_utc": "2026-10-12T02:25:10+00:00",
-  "source_commit": "db89f64b0612076ef5428a4772dbcc263a939ddd",
+  "run_id": "20261012T061421Z-8f5024b1",
+  "status": "RUNNING",
+  "started_at_utc": "2026-10-12T06:14:21+00:00",
+  "updated_at_utc": "2026-10-12T06:14:21+00:00",
+  "source_commit": "c37d2ddbd6d28477b14703c56c1f29e272085c52",
   "execution_engine": "Google Colab direct notebook",
   "report_path": "",
-  "detail": "AssertionError: "
+  "detail": "Notebook execution started; research is running in Google Colab."
 }
