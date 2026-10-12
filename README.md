@@ -93,7 +93,7 @@ The current Yahoo market-cap value is a live universe snapshot, not a point-in-t
 
 ## External research and alternative data sources
 
-The literature review and test plan for MACD parameter candidates, plus official SET data-source options and licensing limitations, are documented in [`docs/research_backed_macd_parameters_and_data_sources.md`](docs/research_backed_macd_parameters_and_data_sources.md). The canonical notebook now includes Cell 13.15 and publishes `results/run_reports/literature_macd_parameter_grid.csv` after a successful Colab run. The SETSMART/SMART Marketplace source is not automatically queried unless authorized access or an export is available; Yahoo Finance remains the current runtime source until an independent dataset is actually obtained and reconciled.
+The literature review and test plan for MACD parameter candidates, plus official SET data-source options and licensing limitations, are documented in [`docs/research_backed_macd_parameters_and_data_sources.md`](docs/research_backed_macd_parameters_and_data_sources.md). The canonical notebook now includes Cell 13.15 and publishes `results/run_reports/literature_macd_parameter_grid.csv` after a successful Colab run. Paid data sources are explicitly prohibited for this project, including SETSMART, SMART Marketplace, and paid historical-data requests. Yahoo Finance remains the current runtime source; a free alternative such as Alpha Vantage may only be added after ticker support and overlapping OHLCV quality are verified. See the research/data-source policy for details.
 
 ## Research archive
 
