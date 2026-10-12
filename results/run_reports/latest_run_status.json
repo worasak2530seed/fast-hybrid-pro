@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "run_id": "20261012T081339Z-8c9763ad",
-  "status": "RUNNING",
+  "status": "SUCCESS",
   "started_at_utc": "2026-10-12T08:13:39+00:00",
-  "updated_at_utc": "2026-10-12T08:13:39+00:00",
+  "updated_at_utc": "2026-10-12T08:54:31+00:00",
   "source_commit": "84c2ac5b92a7bf689eb24919e42ca890a1ce4234",
   "execution_engine": "Google Colab direct notebook",
-  "report_path": "",
-  "detail": "Notebook execution started; research is running in Google Colab."
+  "report_path": "results/run_reports/colab_run_20261012T081339Z-8c9763ad.json",
+  "detail": "All notebook cells completed; summary and available CSV artifacts were published to GitHub."
 }
