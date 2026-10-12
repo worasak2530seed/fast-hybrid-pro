@@ -17,12 +17,16 @@
 ## Run lifecycle
 
 1. The first code cell validates GitHub access and publishes `results/run_reports/latest_run_status.json` with status `RUNNING`. If credentials are missing or GitHub write access is unavailable, execution stops before research begins.
-2. A post-cell error handler attempts to publish `FAILED` with a short redacted error summary.
+2. A post-cell error handler attempts to publish `FAILED` with a short redacted error summary. It also publishes a traceback and failed-cell excerpt to `results/run_reports/latest_run_error.txt` and a run-specific `colab_error_<run-id>.txt` when GitHub writes are available. The traceback is capped at 12,000 characters and the cell excerpt at 6,000 characters; both are redacted. These files may be missing if the first cell fails before registering the handler or GitHub publishing is unavailable.
 3. The final cell runs only after prior cells have completed without errors. It publishes a run-specific JSON summary and updates `latest_run_summary.json`.
 4. Available CSV artifacts include True Global Portfolio stress results and trades, risk/capacity sensitivity, loss attribution, nested OOS filters, partial-profit OOS, trend/MACD/stop ablation, MACD lead/warning event-study summary and shortlist, and the production signal journal.
 5. Status becomes `SUCCESS` only after the report artifacts have been published. Research diagnostics do not automatically modify Production settings.
 
 The Colab runtime cannot directly read the browser's saved interactive notebook file, so the structured reports and CSVs are published automatically; use Colab's Drive save option if a fully rendered notebook copy is also required.
+
+## Notebook authority
+
+`Fast_Hybrid_Pro.ipynb` at the repository root is the only canonical runnable notebook. Notebooks under `research/` are archives; `.ipynb` files under `results/` are historical execution snapshots and may have older cells and outputs. Do not run those copies as the current strategy.
 
 ## Termux notification watcher
 
