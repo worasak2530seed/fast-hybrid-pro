@@ -1,7 +1,7 @@
 name: Run Fast Hybrid Pro on Google Colab
 
-# Disabled automatic execution: research runs must be initiated from Termux/Colab.
-# Keep manual dispatch only for explicit emergency use.
+# Disabled automatic execution: routine research starts directly in Google Colab.
+# Termux only watches GitHub status and sends Telegram notifications; this legacy workflow is manual-only.
 on:
   workflow_dispatch:
 
