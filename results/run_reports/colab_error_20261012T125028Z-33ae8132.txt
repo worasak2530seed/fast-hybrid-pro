@@ -1,0 +1,145 @@
+FAST HYBRID PRO — COLAB FAILURE REPORT
+Run ID: 20261012T125028Z-33ae8132
+Source commit: 203165ecc597008d3284d6a2f8339925c38a32c4
+Exception type: RuntimeError
+
+TRACEBACK
+========
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/IPython/core/interactiveshell.py", line 3553, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_5381/1340053118.py", line 144, in <cell line: 0>
+    _fhp_upload_df_final("results/run_reports/first_passage_entry_warning_events.csv", globals().get("_C1317_events_df"))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_5381/1340053118.py", line 55, in _fhp_upload_df_final
+    _fhp_publish_text(path, csv_text, "results: publish Colab research artifact " + _FHP_RUN_ID)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_5381/4108027929.py", line 69, in _fhp_publish_text
+    raise RuntimeError("GitHub write failed for " + path + " (HTTP " + str(saved.status_code) + "): " + reason)
+RuntimeError: GitHub write failed for results/run_reports/first_passage_entry_warning_events.csv (HTTP 413): request rejected
+
+
+FAILED CELL SOURCE (up to 6000 chars)
+===================
+# ============================================================
+# COLAB DIRECT PUBLISHER — VALIDATED RESULT ARTIFACTS
+# Runs only after the preceding notebook cells complete without errors.
+# ============================================================
+import json as _fhp_json_final
+import math as _fhp_math_final
+from pathlib import Path as _fhp_Path_final
+
+if _FHP_RUN_FAILED:
+    raise RuntimeError("At least one earlier cell failed; refusing to publish SUCCESS.")
+
+_FHP_REQUIRED_RESULTS = [
+    "PRODUCTION_SYMBOLS", "feature_data", "global_candidates", "stress_results",
+    "_c138_real", "_c139_result", "_c1310_oos", "_C1311_OOS",
+    "_C1312_df", "_C1313_df", "_C1314_events", "_C1314_summary", "_C1314_pivot", "_C1315_df", "_C1316_df", "_C1317_df",
+]
+_FHP_MISSING_RESULTS = [name for name in _FHP_REQUIRED_RESULTS if name not in globals()]
+if _FHP_MISSING_RESULTS:
+    raise RuntimeError(
+        "Refusing to publish SUCCESS; required research result variables are missing: "
+        + ", ".join(_FHP_MISSING_RESULTS)
+    )
+if not isinstance(stress_results, pd.DataFrame) or stress_results.empty:
+    raise RuntimeError("Refusing to publish SUCCESS; True Global Portfolio stress results are empty.")
+if not isinstance(_C1314_summary, pd.DataFrame) or _C1314_summary.empty:
+    raise RuntimeError("Refusing to publish SUCCESS; MACD event-study summary is empty.")
+
+def _fhp_clean_final(value):
+    if isinstance(value, dict):
+        return {str(k): _fhp_clean_final(v) for k, v in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_fhp_clean_final(v) for v in value]
+    if isinstance(value, (np.integer,)):
+        return int(value)
+    if isinstance(value, (np.floating, float)):
+        number = float(value)
+        return number if _fhp_math_final.isfinite(number) else None
+    if isinstance(value, (np.bool_,)):
+        return bool(value)
+    if isinstance(value, (pd.Timestamp,)):
+        return value.isoformat()
+    if value is None or isinstance(value, (str, int, bool)):
+        return value
+    return str(value)
+
+def _fhp_records_final(frame, limit=5000):
+    if not isinstance(frame, pd.DataFrame):
+        return []
+    safe = frame.head(limit).copy()
+    return _fhp_json_final.loads(safe.to_json(orient="records", date_format="iso"))
+
+def _fhp_upload_df_final(path, frame):
+    if isinstance(frame, pd.DataFrame):
+        csv_text = frame.to_csv(index=False)
+        _fhp_publish_text(path, csv_text, "results: publish Colab research artifact " + _FHP_RUN_ID)
+        return len(frame)
+    return None
+
+def _fhp_portfolio_final(result):
+    if not isinstance(result, dict):
+        return None
+    keys = [
+        "FinalEquity", "NetPnL", "Trades", "WinRatePct", "ProfitFactor",
+        "MaxDrawdownPct", "SkippedCapacity", "SkippedSymbolOverlap", "SkippedCapital"
+    ]
+    payload = {key: result.get(key) for key in keys if key in result}
+    trades = result.get("TradesDF")
+    if isinstance(trades, pd.DataFrame):
+        payload["trade_rows"] = int(len(trades))
+        if not trades.empty and "PnL" in trades.columns:
+            pnl = pd.to_numeric(trades["PnL"], errors="coerce").dropna()
+            payload["largest_loss_thb"] = float(pnl.min()) if not pnl.empty else None
+            payload["largest_win_thb"] = float(pnl.max()) if not pnl.empty else None
+    return _fhp_clean_final(payload)
+
+_fhp_summary = {
+    "schema_version": 1,
+    "run_id": _FHP_RUN_ID,
+    "status": "SUCCESS",
+    "started_at_utc": _FHP_STARTED_AT,
+    "completed_at_utc": _fhp_utc_now(),
+    "source_commit": _FHP_SOURCE_COMMIT,
+    "execution_engine": "Google Colab direct notebook",
+    "production": {
+        "min_score": globals().get("PRODUCTION_MIN_SCORE"),
+        "weekly_confirm": globals().get("PRODUCTION_WEEKLY_CONFIRM"),
+        "atr_multiplier": globals().get("PRODUCTION_ATR_MULT"),
+        "target2_pct": globals().get("PRODUCTION_TARGET2_PCT"),
+        "max_holding_days": globals().get("PRODUCTION_MAX_HOLDING_DAYS"),
+        "production_unchanged": True,
+    },
+    "universe": {
+        "production_symbols": len(globals().get("PRODUCTION_SYMBOLS", [])),
+        "feature_symbols": len(globals().get("feature_data", {})),
+        "global_candidates": len(globals().get("global_candidates", [])),
+    },
+    "true_global_portfolio_realistic_friction": _fhp_portfolio_final(globals().get("_c138_real")),
+    "true_global_portfolio_gross": _fhp_portfolio_final(globals().get("_c138_gross")),
+    "stress_results": _fhp_records_final(globals().get("stress_results")),
+    "risk_capacity_sensitivity": _fhp_records_final(globals().get("_C1312_df")),
+    "loss_attribution": _fhp_records_final(globals().get("_c139_result")),
+    "nested_oos_filter": _fhp_records_final(globals().get("_c1310_oos")),
+    "partial_profit_oos": _fhp_records_final(globals().get("_C1311_OOS")),
+    "trend_macd_stop_ablation": _fhp_records_final(globals().get("_C1313_df")),
+    "literature_macd_grid": _fhp_records_final(globals().get("_C1315_df")),
+    "multi_factor_early_entry": _fhp_records_final(globals().get("_C1316_df")),
+    "first_passage_entry_warning": _fhp_records_final(globals().get("_C1317_df")),
+    "macd_event_study": {
+        "rows": int(len(globals().get("_C1314_events", []))),
+        "summary": _fhp_records_final(globals().get("_C1314_summary")),
+        "preliminary_shortlist": _fhp_records_final(globals().get("_C1314_pivot"), limit=100),
+    },
+    "notes": [
+        "Research outputs are diagnostic and do not automatically change Production settings.",
+        "Review out-of-sample performance and realistic transaction costs before considering any promotion.",
+        "Cell 13.16 is a signal-level factor event study, not a portfolio simulation; no factors are promoted automatically.",
+        "Cell 13.17 is a first-passage barrier event study; same-bar target/stop ambiguity is resolved conservatively as stop-first, and no rules are promoted automatically.",
+    ],
+}
+_fhp_summary_text = _fhp_json_final.dumps(
+    _fhp_cl
