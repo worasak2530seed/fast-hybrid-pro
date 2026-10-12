@@ -17,9 +17,9 @@ Repository: `worasak2530seed/fast-hybrid-pro`
 ```text
 fast-hybrid-pro/
 ├── .github/workflows/        # legacy manual-only workflow; not for routine research
-├── cells/                    # standalone canonical research cells
+├── cells/                    # reserved for validated standalone research cells
 ├── docs/                     # workflow and research rules
-├── notebooks/                # canonical Colab notebooks
+├── notebooks/                # notebook documentation; canonical file is at repository root
 ├── research/                 # archived research only
 ├── results/                  # published reports, CSVs, and journal
 ├── src/                      # reusable Python modules
@@ -28,11 +28,15 @@ fast-hybrid-pro/
 └── README.md
 ```
 
+## Which notebook is authoritative?
+
+`Fast_Hybrid_Pro.ipynb` at the repository root is the **only canonical runnable notebook**. The notebooks under `research/` are archived research, and the `.ipynb` files under `results/` are historical execution snapshots with older cell sets/outputs; do not use those copies to launch a new run. `notebooks/README.md` documents this layout.
+
 ## Run directly in Google Colab
 
 1. Open [Fast_Hybrid_Pro.ipynb in Google Colab](https://colab.research.google.com/github/worasak2530seed/fast-hybrid-pro/blob/main/Fast_Hybrid_Pro.ipynb).
 2. In Google Colab, open the **Secrets** panel and add `FAST_HYBRID_GITHUB_TOKEN`. Use a fine-grained GitHub token restricted to this repository with **Contents: Read and write** permission, and enable notebook access for the secret. Never paste the token into a notebook cell or commit it to GitHub.
-3. Run **Runtime → Run all**. The first code cell validates the secret and publishes a `RUNNING` status before expensive research starts. Any later cell error attempts to publish `FAILED`; the final cell publishes `SUCCESS` only after the notebook completes and the report artifacts are uploaded.
+3. Run **Runtime → Run all**. The first code cell validates the secret and publishes a `RUNNING` status before expensive research starts. Any later cell error attempts to publish `FAILED`; the final cell publishes `SUCCESS` only after the notebook completes and the report artifacts are uploaded. On a cell failure, inspect `results/run_reports/latest_run_error.txt` and the run-specific `colab_error_<run-id>.txt` report when available. These reports may be absent if failure occurs before the error handler starts or GitHub publishing is unavailable.
 4. To receive Telegram alerts, start the Termux watcher described below and leave it running while Colab works.
 5. Review the published results in [results/run_reports](https://github.com/worasak2530seed/fast-hybrid-pro/tree/main/results/run_reports).
 
