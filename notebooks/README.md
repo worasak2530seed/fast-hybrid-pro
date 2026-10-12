@@ -1,7 +1,7 @@
-# Colab Notebooks
+# Notebook layout
 
-The canonical Colab notebook will be stored here once the current working notebook is exported from Colab.
+The canonical runnable notebook is [`Fast_Hybrid_Pro.ipynb`](../Fast_Hybrid_Pro.ipynb) at the repository root. Open it in Google Colab using the link in the root `README.md` and use **Runtime → Run all**.
 
-Do not create a replacement notebook from this README alone. The existing research notebook contains the authoritative runtime state and must be migrated deliberately.
+This directory is documentation/reserved space; it does not currently contain a second canonical notebook. Do not create or run a duplicate here.
 
-Google Colab can open notebooks stored in GitHub, so this directory will become the stable entry point once the current notebook is committed.
+Notebook copies under `results/` are historical execution snapshots, and notebooks under `research/` are archived research. They may have older cell sets or saved outputs and are not the current source of truth.
