@@ -40,7 +40,7 @@ fast-hybrid-pro/
 4. To receive Telegram alerts, start the Termux watcher described below and leave it running while Colab works.
 5. Review the published results in [results/run_reports](https://github.com/worasak2530seed/fast-hybrid-pro/tree/main/results/run_reports).
 
-The direct Colab workflow publishes a run summary, the True Global Portfolio stress results and executed trades, risk/capacity sensitivity, loss attribution, nested OOS result tables, MACD event-study tables, and the production signal journal when available. The executed notebook's interactive cell outputs remain in the Colab session; save a copy to Drive if you also need the complete rendered notebook.
+The direct Colab workflow publishes a run summary, the True Global Portfolio stress results and executed trades, risk/capacity sensitivity, loss attribution, nested OOS result tables, MACD event-study tables, the literature-inspired MACD parameter grid, and the production signal journal when available. Cell 13.15 compares a predeclared parameter set using fixed realistic friction and chronological entry cohorts; it is diagnostic research only and never changes Production. The executed notebook's interactive cell outputs remain in the Colab session; save a copy to Drive if you also need the complete rendered notebook.
 
 ## Termux: notifications only
 
@@ -90,6 +90,10 @@ The stock universe is rebuilt from SET/mai listed-company classification before 
 The liquidity gate is the **sum** of trading value across the latest 20 trading sessions, strictly greater than `20 MB` in total; it is not a per-day average. The price gate is part of the canonical universe filter, not a strategy-optimization parameter.
 
 The current Yahoo market-cap value is a live universe snapshot, not a point-in-time historical market-cap series. Historical survivorship-free fundamental backtesting requires historical market-cap snapshots. This limitation must remain explicit.
+
+## External research and alternative data sources
+
+The literature review and test plan for MACD parameter candidates, plus official SET data-source options and licensing limitations, are documented in [`docs/research_backed_macd_parameters_and_data_sources.md`](docs/research_backed_macd_parameters_and_data_sources.md). The canonical notebook now includes Cell 13.15 and publishes `results/run_reports/literature_macd_parameter_grid.csv` after a successful Colab run. The SETSMART/SMART Marketplace source is not automatically queried unless authorized access or an export is available; Yahoo Finance remains the current runtime source until an independent dataset is actually obtained and reconciled.
 
 ## Research archive
 
