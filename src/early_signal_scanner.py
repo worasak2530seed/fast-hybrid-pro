@@ -139,9 +139,11 @@ def calculate_indicators(ohlcv: pd.DataFrame, config: ScannerConfig = CONFIG) ->
         adjust=False,
         min_periods=config.kc_atr_window,
     ).mean()
-    df["KC_MID"] = bb_mid
-    df["KC_UPPER"] = bb_mid + config.kc_multiplier * kc_atr
-    df["KC_LOWER"] = bb_mid - config.kc_multiplier * kc_atr
+    # Conventional Keltner Channel uses an EMA centerline (unlike BB's SMA centerline).
+    kc_mid = close.ewm(span=config.bb_window, adjust=False).mean()
+    df["KC_MID"] = kc_mid
+    df["KC_UPPER"] = kc_mid + config.kc_multiplier * kc_atr
+    df["KC_LOWER"] = kc_mid - config.kc_multiplier * kc_atr
     df["SQUEEZE"] = (
         (df["BB_UPPER"] <= df["KC_UPPER"])
         & (df["BB_LOWER"] >= df["KC_LOWER"])
@@ -201,13 +203,10 @@ def calculate_indicators(ohlcv: pd.DataFrame, config: ScannerConfig = CONFIG) ->
         df[name] = values.fillna(False).astype(bool)
     df["ENTRY_SCORE"] = pd.DataFrame(score_parts, index=df.index).fillna(False).astype(bool).sum(axis=1)
 
-    # Early entry requires MACD improvement; EMA alignment is deliberately not required.
-    macd_recovering = df["HIST_RISING_2"] & (df["MACD_HIST"] < 0)
-    macd_near_zero_improving = df["HIST_RISING_2"] & (df["MACD_HIST"] >= 0)
-    df["EARLY_ENTRY"] = (
-        (macd_recovering | macd_near_zero_improving)
-        & (df["ENTRY_SCORE"] >= config.minimum_score)
-    )
+    # Early entry requires a rising MACD histogram; EMA alignment is deliberately not required.
+    # The previous recovering/near-zero branches covered every possible histogram value,
+    # so they were logically equivalent to HIST_RISING_2 and added no extra filter.
+    df["EARLY_ENTRY"] = df["HIST_RISING_2"] & (df["ENTRY_SCORE"] >= config.minimum_score)
 
     # Early warning is informational only; it never issues a sell order.
     warning_evidence = (
