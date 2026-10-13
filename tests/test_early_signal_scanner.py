@@ -77,6 +77,8 @@ def test_indicator_calculation_is_complete_and_finite_after_warmup():
         "EARLY_ENTRY", "EARLY_WARNING_LEVEL",
     }
     assert required.issubset(result.columns)
+    expected_kc_mid = result["Close"].ewm(span=CONFIG.bb_window, adjust=False).mean()
+    assert np.allclose(result["KC_MID"].to_numpy(), expected_kc_mid.to_numpy())
     assert result.index.is_monotonic_increasing
     assert result.index.is_unique
     assert result["MACD"].notna().all()
