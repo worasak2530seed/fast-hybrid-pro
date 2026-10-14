@@ -68,8 +68,8 @@ try:
         d.get("scan_error_count", 0), d.get("signal_count", 0),
         freshness.get("excluded_stale_ticker_count", 0)))
 except Exception:
-    print("0\t0\t0\t0")
-' 2>/dev/null || printf '0\t0\t0\t0')"
+    print("0\t0\t0\t0\t0")
+' 2>/dev/null || printf '0\t0\t0\t0\t0')"
         IFS=
 
         if [ "$status" = "FAILED" ]; then
