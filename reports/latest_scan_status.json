@@ -1,10 +1,10 @@
 {
-  "run_id": "20261014T090117Z",
+  "run_id": "20261014T105321Z",
   "status": "FAILED",
-  "updated_at_utc": "2026-10-14T09:03:46Z",
+  "updated_at_utc": "2026-10-14T10:56:15Z",
   "scan_date": null,
   "error_type": "RuntimeError",
-  "error_message": "STALE_DATA: free Yahoo intraday prices could not be verified fresh for every qualifying ticker during market hours (26 failures). Examples: [('AAI.BK', 'Intraday bar stale/future after retries: bar_start=2026-10-14T15:15:00+07:00, bar_close=2026-10-14T15:30:00+07:00, age_since_close=33.5 min'), ('AH.BK', 'Intraday bar stale/future after retries: bar_start=2026-10-14T15:15:00+07:00, bar_close=2026-10-14T15:30:00+07:00, age_since_close=33.5 min'), ('AURA.BK', 'Intraday bar stale/future after retries: bar_start=2026-10-14T15:15:00+07:00, bar_close=2026-10-14T15:30:00+07:00, age_since_close=33.5 min'), ('EASTW.BK', 'Intraday bar stale/future after retries: bar_start=2026-10-14T15:15:00+07:00, bar_close=2026-10-14T15:30:00+07:00, age_since_close=33.5 min'), ('FORTH.BK', 'Intraday bar stale/future after retries: bar_start=2026-10-14T15:15:00+07:00, bar_close=2026-10-14T15:30:00+07:00, age_since_close=33.5 min'), ('GST.BK', 'Intraday bar stale/future after retries: bar_start=2026-10-14T15:15:00+07:00, bar_close=2026-10-14T15:30:00+07:00, age_since_close=33.5 min'), ('KSL.BK', 'Intraday bar stale/future after retries: bar_start=2026-10-14T15:15:00+07:00, bar_close=2026-10-14T15:30:00+07:00, age_since_close=33.5 min'), ('MEDEZE.BK', 'Intraday bar stale/future after retries: bar_start=2026-10-14T15:00:00+07:00, bar_close=2026-10-14T15:15:00+07:00, age_since_close=48.5 min'), ('NEO.BK', 'Intraday bar stale/future after retries: bar_start=2026-10-14T15:15:00+07:00, bar_close=2026-10-14T15:30:00+07:00, age_since_close=33.5 min'), ('NER.BK', 'Intraday bar stale/future after retries: bar_start=2026-10-14T15:15:00+07:00, bar_close=2026-10-14T15:30:00+07:00, age_since_close=33.5 min')]. No current scan report should be published.",
+  "error_message": "OFFICIAL_MARKET_DATE_UNAVAILABLE: no recent date (within 14 days) could be parsed from official SET pages. No report will be published.",
   "traceback_path": "reports/latest_scan_failure.txt",
   "traceback_url": "https://github.com/worasak2530seed/fast-hybrid-pro/blob/scan-reports/reports/latest_scan_failure.txt",
   "status_url": "https://github.com/worasak2530seed/fast-hybrid-pro/blob/scan-reports/reports/latest_scan_status.json",
