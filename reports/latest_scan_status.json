@@ -1,15 +1,22 @@
 {
-  "run_id": "20261014T110008Z",
-  "status": "FAILED",
-  "updated_at_utc": "2026-10-14T11:03:05Z",
-  "scan_date": null,
-  "error_type": "RuntimeError",
-  "error_message": "OFFICIAL_MARKET_DATE_UNAVAILABLE: no recent completed non-holiday date could be verified from official SET market pages and holiday calendar. No report will be published.",
-  "traceback_path": "reports/latest_scan_failure.txt",
-  "traceback_url": "https://github.com/worasak2530seed/fast-hybrid-pro/blob/scan-reports/reports/latest_scan_failure.txt",
-  "status_url": "https://github.com/worasak2530seed/fast-hybrid-pro/blob/scan-reports/reports/latest_scan_status.json",
-  "note": "This run failed. The previous successful CSV is intentionally preserved and must not be treated as the result of this failed run.",
+  "integrity_check_passed": true,
+  "integrity_checks": [
+    "non-empty report",
+    "non-blank unique symbols",
+    "single valid scan date",
+    "all rows pass universe gate",
+    "ENTRY_SCORE within 0..5",
+    "positive Close",
+    "required signal columns present",
+    "during market session: intraday price, timestamp, age, and FRESH status validated for every row"
+  ],
+  "run_id": "20261014T124258Z",
+  "status": "SUCCESS",
+  "detail": "Live scanner completed and reports published.",
+  "scan_date": "2026-10-12",
+  "updated_at_utc": "2026-10-14T12:42:58Z",
+  "report_path": "reports/latest_scan.csv",
   "summary_path": "reports/latest_scan_summary.json",
   "summary_url": "https://github.com/worasak2530seed/fast-hybrid-pro/blob/scan-reports/reports/latest_scan_summary.json",
-  "report_url": null
+  "report_url": "https://github.com/worasak2530seed/fast-hybrid-pro/blob/scan-reports/reports/latest_scan.csv"
 }
