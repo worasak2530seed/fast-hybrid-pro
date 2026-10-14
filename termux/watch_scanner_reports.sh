@@ -41,7 +41,7 @@ try:
               d.get("updated_at_utc", ""), d.get("summary_url", ""),
               d.get("report_url", ""), d.get("error_type", ""),
               d.get("error_message", ""), d.get("traceback_url", "")]
-    print("\\t".join(str(x).replace("\\t", " ").replace("\\n", " ") for x in fields))
+    print("\t".join(str(x).replace("\t", " ").replace("\n", " ") for x in fields))
 except Exception:
     raise SystemExit(1)
 ' 2>/dev/null || true)"
