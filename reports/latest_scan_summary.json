@@ -1,10 +1,10 @@
 {
-  "run_id": "20261014T105321Z",
+  "run_id": "20261014T110008Z",
   "status": "FAILED",
-  "updated_at_utc": "2026-10-14T10:56:15Z",
+  "updated_at_utc": "2026-10-14T11:03:05Z",
   "scan_date": null,
   "error_type": "RuntimeError",
-  "error_message": "OFFICIAL_MARKET_DATE_UNAVAILABLE: no recent date (within 14 days) could be parsed from official SET pages. No report will be published.",
+  "error_message": "OFFICIAL_MARKET_DATE_UNAVAILABLE: no recent completed non-holiday date could be verified from official SET market pages and holiday calendar. No report will be published.",
   "traceback_path": "reports/latest_scan_failure.txt",
   "traceback_url": "https://github.com/worasak2530seed/fast-hybrid-pro/blob/scan-reports/reports/latest_scan_failure.txt",
   "status_url": "https://github.com/worasak2530seed/fast-hybrid-pro/blob/scan-reports/reports/latest_scan_status.json",
