@@ -62,13 +62,48 @@ except Exception:
 import json, sys
 try:
     d = json.load(sys.stdin)
-    print("{}\t{}\t{}\t{}".format(
+    freshness = d.get("intraday_freshness_check", {}) or {}
+    print("{}\t{}\t{}\t{}\t{}".format(
         d.get("early_entry_count", 0), d.get("watch_warning_count", 0),
-        d.get("scan_error_count", 0), d.get("signal_count", 0)))
+        d.get("scan_error_count", 0), d.get("signal_count", 0),
+        freshness.get("excluded_stale_ticker_count", 0)))
 except Exception:
     print("0\t0\t0\t0")
 ' 2>/dev/null || printf '0\t0\t0\t0')"
-        IFS=$'\t' read -r entries warnings errors signal_count <<< "$counts"
+        IFS=
+
+        if [ "$status" = "FAILED" ]; then
+          message="Fast Hybrid Pro — SCAN FAILED
+Run: $run_id
+Error type: $error_type
+Error: $error_message
+Summary: $summary_url
+Traceback: $traceback_url
+Status: https://github.com/$REPO/blob/$REPORT_BRANCH/reports/latest_scan_status.json"
+        else
+          message="Fast Hybrid Pro — SCAN $status
+Date: $scan_date
+EARLY ENTRY: $entries
+WATCH/WARNING: $warnings
+Stocks with signals: $signal_count
+Scan errors: $errors
+Stale intraday excluded: $excluded_stale
+Summary: $summary_url
+CSV: $report_url"
+        fi
+
+        if python "$SCRIPT_DIR/telegram_notifier.py" "$message"; then
+          printf '%s' "$key" > "$STATE_FILE"
+          echo "TELEGRAM_SCAN_REPORT_SENT: $key ($updated_at)"
+        else
+          echo "Telegram notification failed; will retry on next poll."
+        fi
+      fi
+    fi
+  fi
+  sleep "$POLL_SECONDS"
+done
+\t' read -r entries warnings errors signal_count excluded_stale <<< "$counts"
 
         if [ "$status" = "FAILED" ]; then
           message="Fast Hybrid Pro — SCAN FAILED
