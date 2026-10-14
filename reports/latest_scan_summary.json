@@ -1,84 +1,37 @@
 {
-  "run_id": "20261014T015150Z",
+  "integrity_check_passed": true,
+  "integrity_checks": [
+    "non-empty report",
+    "non-blank unique symbols",
+    "single valid scan date",
+    "all rows pass universe gate",
+    "ENTRY_SCORE within 0..5",
+    "positive Close",
+    "required signal columns present"
+  ],
+  "run_id": "20261014T062051Z",
   "status": "SUCCESS",
   "scan_date": "2026-10-12",
-  "updated_at_utc": "2026-10-14T01:51:50Z",
-  "universe_pass_count": 134,
-  "indicator_data_count": 134,
+  "updated_at_utc": "2026-10-14T06:20:51Z",
+  "universe_pass_count": 133,
+  "indicator_data_count": 133,
   "scan_error_count": 0,
-  "stale_data_excluded_count": 56,
-  "stale_data_exclusions": {
-    "ACAP.BK": "SET public history schema did not match supported aliases; sample_keys=['date', 'symbol', 'prior', 'open', 'high', 'low', 'average', 'close', 'change', 'percentChange', 'totalVolume', 'totalValue', 'pe', 'pbv', 'bookValuePerShare', 'dividendYield', 'marketCap', 'listedShare', 'par', 'financialDate', 'nav', 'marketIndex', 'marketPercentChange']",
-    "AFC.BK": "Latest SET history bar 2026-10-09 does not match official date 2026-10-12",
-    "AIRA.BK": "Latest SET history bar 2026-09-29 does not match official date 2026-10-12",
-    "BLISS.BK": "SET public history schema did not match supported aliases; sample_keys=['date', 'symbol', 'prior', 'open', 'high', 'low', 'average', 'close', 'change', 'percentChange', 'totalVolume', 'totalValue', 'pe', 'pbv', 'bookValuePerShare', 'dividendYield', 'marketCap', 'listedShare', 'par', 'financialDate', 'nav', 'marketIndex', 'marketPercentChange']",
-    "CHO.BK": "Latest SET history bar 2026-07-03 does not match official date 2026-10-12",
-    "CHOTI.BK": "Latest SET history bar 2026-10-09 does not match official date 2026-10-12",
-    "CITY.BK": "Latest SET history bar 2026-09-28 does not match official date 2026-10-12",
-    "CV.BK": "SET public history schema did not match supported aliases; sample_keys=['date', 'symbol', 'prior', 'open', 'high', 'low', 'average', 'close', 'change', 'percentChange', 'totalVolume', 'totalValue', 'pe', 'pbv', 'bookValuePerShare', 'dividendYield', 'marketCap', 'listedShare', 'par', 'financialDate', 'nav', 'marketIndex', 'marketPercentChange']",
-    "ECF.BK": "Latest SET history bar 2026-07-03 does not match official date 2026-10-12",
-    "EMPIRE.BK": "Latest SET history bar 2026-08-14 does not match official date 2026-10-12",
-    "F&D.BK": "Latest SET history bar 2026-09-29 does not match official date 2026-10-12",
-    "FMT.BK": "Latest SET history bar 2026-10-09 does not match official date 2026-10-12",
-    "GSTEEL.BK": "SET public history schema did not match supported aliases; sample_keys=['date', 'symbol', 'prior', 'open', 'high', 'low', 'average', 'close', 'change', 'percentChange', 'totalVolume', 'totalValue', 'pe', 'pbv', 'bookValuePerShare', 'dividendYield', 'marketCap', 'listedShare', 'par', 'financialDate', 'nav', 'marketIndex', 'marketPercentChange']",
-    "GYT.BK": "Latest SET history bar 2026-10-06 does not match official date 2026-10-12",
-    "HPT.BK": "Latest SET history bar 2026-07-03 does not match official date 2026-10-12",
-    "INGRS.BK": "Latest SET history bar 2026-07-31 does not match official date 2026-10-12",
-    "JAK.BK": "Latest SET history bar 2026-10-08 does not match official date 2026-10-12",
-    "JCT.BK": "Latest SET history bar 2026-10-01 does not match official date 2026-10-12",
-    "KDH.BK": "Latest SET history bar 2026-10-01 does not match official date 2026-10-12",
-    "KKC.BK": "SET public history schema did not match supported aliases; sample_keys=['date', 'symbol', 'prior', 'open', 'high', 'low', 'average', 'close', 'change', 'percentChange', 'totalVolume', 'totalValue', 'pe', 'pbv', 'bookValuePerShare', 'dividendYield', 'marketCap', 'listedShare', 'par', 'financialDate', 'nav', 'marketIndex', 'marketPercentChange']",
-    "KWC.BK": "Latest SET history bar 2026-09-29 does not match official date 2026-10-12",
-    "MATI.BK": "Latest SET history bar 2026-10-01 does not match official date 2026-10-12",
-    "MILL.BK": "Latest SET history bar 2026-07-03 does not match official date 2026-10-12",
-    "MUD.BK": "Latest SET history bar 2026-10-08 does not match official date 2026-10-12",
-    "MVP.BK": "Latest SET history bar 2026-07-03 does not match official date 2026-10-12",
-    "NEW.BK": "Latest SET history bar 2026-08-20 does not match official date 2026-10-12",
-    "NFC.BK": "SET public history schema did not match supported aliases; sample_keys=['date', 'symbol', 'prior', 'open', 'high', 'low', 'average', 'close', 'change', 'percentChange', 'totalVolume', 'totalValue', 'pe', 'pbv', 'bookValuePerShare', 'dividendYield', 'marketCap', 'listedShare', 'par', 'financialDate', 'nav', 'marketIndex', 'marketPercentChange']",
-    "NPK.BK": "Latest SET history bar 2026-10-09 does not match official date 2026-10-12",
-    "NWR.BK": "SET public history schema did not match supported aliases; sample_keys=['date', 'symbol', 'prior', 'open', 'high', 'low', 'average', 'close', 'change', 'percentChange', 'totalVolume', 'totalValue', 'pe', 'pbv', 'bookValuePerShare', 'dividendYield', 'marketCap', 'listedShare', 'par', 'financialDate', 'nav', 'marketIndex', 'marketPercentChange']",
-    "OGC.BK": "Latest SET history bar 2026-10-09 does not match official date 2026-10-12",
-    "PICO.BK": "SET public history schema did not match supported aliases; sample_keys=['date', 'symbol', 'prior', 'open', 'high', 'low', 'average', 'close', 'change', 'percentChange', 'totalVolume', 'totalValue', 'pe', 'pbv', 'bookValuePerShare', 'dividendYield', 'marketCap', 'listedShare', 'par', 'financialDate', 'nav', 'marketIndex', 'marketPercentChange']",
-    "PMTA.BK": "Latest SET history bar 2026-10-09 does not match official date 2026-10-12",
-    "PPP.BK": "Latest SET history bar 2026-10-09 does not match official date 2026-10-12",
-    "PRAKIT.BK": "Latest SET history bar 2026-10-09 does not match official date 2026-10-12",
-    "QLT.BK": "Latest SET history bar 2026-10-07 does not match official date 2026-10-12",
-    "ROCK.BK": "Latest SET history bar 2026-10-08 does not match official date 2026-10-12",
-    "SAM.BK": "Latest SET history bar 2026-07-03 does not match official date 2026-10-12",
-    "SAWANG.BK": "Latest SET history bar 2026-08-17 does not match official date 2026-10-12",
-    "SE-ED.BK": "Latest SET history bar 2026-10-09 does not match official date 2026-10-12",
-    "SNPS.BK": "Latest SET history bar 2026-10-09 does not match official date 2026-10-12",
-    "STI.BK": "Latest SET history bar 2026-10-09 does not match official date 2026-10-12",
-    "TAPAC.BK": "SET public history schema did not match supported aliases; sample_keys=['date', 'symbol', 'prior', 'open', 'high', 'low', 'average', 'close', 'change', 'percentChange', 'totalVolume', 'totalValue', 'pe', 'pbv', 'bookValuePerShare', 'dividendYield', 'marketCap', 'listedShare', 'par', 'financialDate', 'nav', 'marketIndex', 'marketPercentChange']",
-    "TCJ.BK": "Latest SET history bar 2026-10-09 does not match official date 2026-10-12",
-    "TIPAK.BK": "Insufficient SET history rows for 20-session gate: 6",
-    "TOPP.BK": "Latest SET history bar 2026-10-02 does not match official date 2026-10-12",
-    "TPP.BK": "Latest SET history bar 2026-10-09 does not match official date 2026-10-12",
-    "TR.BK": "SET public history schema did not match supported aliases; sample_keys=['date', 'symbol', 'prior', 'open', 'high', 'low', 'average', 'close', 'change', 'percentChange', 'totalVolume', 'totalValue', 'pe', 'pbv', 'bookValuePerShare', 'dividendYield', 'marketCap', 'listedShare', 'par', 'financialDate', 'nav', 'marketIndex', 'marketPercentChange']",
-    "TSR.BK": "Latest SET history bar 2026-05-20 does not match official date 2026-10-12",
-    "TSTE.BK": "Latest SET history bar 2026-10-09 does not match official date 2026-10-12",
-    "TTCL.BK": "Latest SET history bar 2026-05-20 does not match official date 2026-10-12",
-    "TTI.BK": "Latest SET history bar 2026-10-08 does not match official date 2026-10-12",
-    "TURTLE.BK": "Latest SET history bar 2026-10-06 does not match official date 2026-10-12",
-    "UPOIC.BK": "Latest SET history bar 2026-10-09 does not match official date 2026-10-12",
-    "WELL.BK": "SET public history schema did not match supported aliases; sample_keys=['date', 'symbol', 'prior', 'open', 'high', 'low', 'average', 'close', 'change', 'percentChange', 'totalVolume', 'totalValue', 'pe', 'pbv', 'bookValuePerShare', 'dividendYield', 'marketCap', 'listedShare', 'par', 'financialDate', 'nav', 'marketIndex', 'marketPercentChange']",
-    "WSOL.BK": "Latest SET history bar 2026-05-25 does not match official date 2026-10-12",
-    "ZEN.BK": "Latest SET history bar 2026-10-09 does not match official date 2026-10-12"
-  },
-  "early_entry_count": 43,
+  "stale_data_excluded_count": 0,
+  "stale_data_exclusions": {},
+  "early_entry_count": 40,
   "watch_warning_count": 49,
-  "signal_count": 92,
+  "signal_count": 89,
   "signals": [
     {
       "Symbol": "BBGI.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 7.05,
+      "Close": 7.050000190734863,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 5,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; MACD crossed above Signal; Close above EMA5; Close above prior-day Close; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 7.5435,
-      "ReferenceTarget15Pct": 8.1075
+      "SignalReasons": "MACD Histogram rising for 2 bars; MACD crossed above Signal; price recovery / above EMA5; Stochastic bullish; recent Squeeze support",
+      "ReferenceTarget7Pct": 7.543500204086304,
+      "ReferenceTarget15Pct": 8.107500219345091
     },
     {
       "Symbol": "SUC.BK",
@@ -87,119 +40,75 @@
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 5,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; MACD crossed above Signal; Close above EMA5; Close above prior-day Close; Stochastic bullish; recent Squeeze support",
+      "SignalReasons": "MACD Histogram rising for 2 bars; MACD crossed above Signal; price recovery / above EMA5; Stochastic bullish; recent Squeeze support",
       "ReferenceTarget7Pct": 29.425,
       "ReferenceTarget15Pct": 31.624999999999996
     },
     {
       "Symbol": "BDMS.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 19.1,
+      "Close": 19.100000381469727,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 4,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Close above prior-day Close; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 20.437,
-      "ReferenceTarget15Pct": 21.965
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish; recent Squeeze support",
+      "ReferenceTarget7Pct": 20.437000408172608,
+      "ReferenceTarget15Pct": 21.965000438690183
     },
     {
       "Symbol": "BGRIM.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 19.3,
+      "Close": 19.299999237060547,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 4,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 20.651000000000003,
-      "ReferenceTarget15Pct": 22.195
-    },
-    {
-      "Symbol": "DITTO.BK",
-      "Date": "2026-10-12 00:00:00",
-      "Close": 12.4,
-      "EARLY_ENTRY": true,
-      "ENTRY_SCORE": 4,
-      "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 13.268,
-      "ReferenceTarget15Pct": 14.26
-    },
-    {
-      "Symbol": "GST.BK",
-      "Date": "2026-10-12 00:00:00",
-      "Close": 9.6,
-      "EARLY_ENTRY": true,
-      "ENTRY_SCORE": 4,
-      "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Close above prior-day Close; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 10.272,
-      "ReferenceTarget15Pct": 11.04
-    },
-    {
-      "Symbol": "GULF.BK",
-      "Date": "2026-10-12 00:00:00",
-      "Close": 60.75,
-      "EARLY_ENTRY": true,
-      "ENTRY_SCORE": 4,
-      "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Close above prior-day Close; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 65.0025,
-      "ReferenceTarget15Pct": 69.8625
-    },
-    {
-      "Symbol": "JMART.BK",
-      "Date": "2026-10-12 00:00:00",
-      "Close": 9.85,
-      "EARLY_ENTRY": true,
-      "ENTRY_SCORE": 4,
-      "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Close above prior-day Close; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 10.5395,
-      "ReferenceTarget15Pct": 11.327499999999999
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish; recent Squeeze support",
+      "ReferenceTarget7Pct": 20.650999183654786,
+      "ReferenceTarget15Pct": 22.194999122619627
     },
     {
       "Symbol": "LANNA.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 14.8,
+      "Close": 14.800000190734863,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 4,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 15.836000000000002,
-      "ReferenceTarget15Pct": 17.02
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish; recent Squeeze support",
+      "ReferenceTarget7Pct": 15.836000204086305,
+      "ReferenceTarget15Pct": 17.020000219345093
     },
     {
       "Symbol": "ONEE.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 2.92,
+      "Close": 2.9200000762939453,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 4,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Close above prior-day Close; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 3.1244,
-      "ReferenceTarget15Pct": 3.3579999999999997
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish; recent Squeeze support",
+      "ReferenceTarget7Pct": 3.124400081634522,
+      "ReferenceTarget15Pct": 3.358000087738037
     },
     {
       "Symbol": "OR.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 12.1,
+      "Close": 12.100000381469727,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 4,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Close above prior-day Close; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 12.947000000000001,
-      "ReferenceTarget15Pct": 13.915
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish; recent Squeeze support",
+      "ReferenceTarget7Pct": 12.947000408172608,
+      "ReferenceTarget15Pct": 13.915000438690184
     },
     {
       "Symbol": "PSL.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 9.45,
+      "Close": 9.449999809265137,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 4,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; MACD crossed above Signal; Close above EMA5; Close above prior-day Close; Stochastic bullish",
-      "ReferenceTarget7Pct": 10.1115,
-      "ReferenceTarget15Pct": 10.867499999999998
+      "SignalReasons": "MACD Histogram rising for 2 bars; MACD crossed above Signal; price recovery / above EMA5; Stochastic bullish",
+      "ReferenceTarget7Pct": 10.111499795913696,
+      "ReferenceTarget15Pct": 10.867499780654907
     },
     {
       "Symbol": "RATCH.BK",
@@ -208,31 +117,31 @@
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 4,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Close above prior-day Close; Stochastic bullish; recent Squeeze support",
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish; recent Squeeze support",
       "ReferenceTarget7Pct": 40.660000000000004,
       "ReferenceTarget15Pct": 43.699999999999996
     },
     {
       "Symbol": "SABINA.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 15.4,
+      "Close": 15.399999618530273,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 4,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 16.478,
-      "ReferenceTarget15Pct": 17.709999999999997
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish; recent Squeeze support",
+      "ReferenceTarget7Pct": 16.477999591827395,
+      "ReferenceTarget15Pct": 17.709999561309814
     },
     {
       "Symbol": "SAV.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 10.8,
+      "Close": 10.800000190734863,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 4,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 11.556000000000001,
-      "ReferenceTarget15Pct": 12.42
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish; recent Squeeze support",
+      "ReferenceTarget7Pct": 11.556000204086304,
+      "ReferenceTarget15Pct": 12.420000219345091
     },
     {
       "Symbol": "SPC.BK",
@@ -241,64 +150,42 @@
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 4,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Stochastic bullish; recent Squeeze support",
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish; recent Squeeze support",
       "ReferenceTarget7Pct": 60.455000000000005,
       "ReferenceTarget15Pct": 64.975
     },
     {
       "Symbol": "THAI.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 5.7,
+      "Close": 5.699999809265137,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 4,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; MACD crossed above Signal; Close above EMA5; Close above prior-day Close; Stochastic bullish",
-      "ReferenceTarget7Pct": 6.099,
-      "ReferenceTarget15Pct": 6.555
-    },
-    {
-      "Symbol": "TTA.BK",
-      "Date": "2026-10-12 00:00:00",
-      "Close": 5.1,
-      "EARLY_ENTRY": true,
-      "ENTRY_SCORE": 4,
-      "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 5.457,
-      "ReferenceTarget15Pct": 5.864999999999999
-    },
-    {
-      "Symbol": "WHAUP.BK",
-      "Date": "2026-10-12 00:00:00",
-      "Close": 7.0,
-      "EARLY_ENTRY": true,
-      "ENTRY_SCORE": 4,
-      "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Close above prior-day Close; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 7.49,
-      "ReferenceTarget15Pct": 8.049999999999999
+      "SignalReasons": "MACD Histogram rising for 2 bars; MACD crossed above Signal; price recovery / above EMA5; Stochastic bullish",
+      "ReferenceTarget7Pct": 6.098999795913697,
+      "ReferenceTarget15Pct": 6.5549997806549065
     },
     {
       "Symbol": "AH.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 15.1,
+      "Close": 15.100000381469727,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
       "SignalReasons": "MACD Histogram rising for 2 bars; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 16.157,
-      "ReferenceTarget15Pct": 17.365
+      "ReferenceTarget7Pct": 16.157000408172607,
+      "ReferenceTarget15Pct": 17.365000438690185
     },
     {
       "Symbol": "BCPG.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 6.65,
+      "Close": 6.650000095367432,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Close above prior-day Close; Stochastic bullish",
-      "ReferenceTarget7Pct": 7.115500000000001,
-      "ReferenceTarget15Pct": 7.6475
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
+      "ReferenceTarget7Pct": 7.1155001020431525,
+      "ReferenceTarget15Pct": 7.647500109672546
     },
     {
       "Symbol": "CPALL.BK",
@@ -307,75 +194,108 @@
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Stochastic bullish",
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
       "ReferenceTarget7Pct": 46.010000000000005,
       "ReferenceTarget15Pct": 49.449999999999996
     },
     {
       "Symbol": "CPAXT.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 14.1,
+      "Close": 14.100000381469727,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
       "SignalReasons": "MACD Histogram rising for 2 bars; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 15.087,
-      "ReferenceTarget15Pct": 16.215
+      "ReferenceTarget7Pct": 15.087000408172608,
+      "ReferenceTarget15Pct": 16.215000438690183
+    },
+    {
+      "Symbol": "DITTO.BK",
+      "Date": "2026-10-12 00:00:00",
+      "Close": 12.399999618530273,
+      "EARLY_ENTRY": true,
+      "ENTRY_SCORE": 3,
+      "EARLY_WARNING": "",
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
+      "ReferenceTarget7Pct": 13.267999591827394,
+      "ReferenceTarget15Pct": 14.259999561309813
     },
     {
       "Symbol": "DOHOME.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 3.52,
+      "Close": 3.5199999809265137,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Close above prior-day Close; recent Squeeze support",
-      "ReferenceTarget7Pct": 3.7664000000000004,
-      "ReferenceTarget15Pct": 4.048
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; recent Squeeze support",
+      "ReferenceTarget7Pct": 3.7663999795913696,
+      "ReferenceTarget15Pct": 4.047999978065491
+    },
+    {
+      "Symbol": "GST.BK",
+      "Date": "2026-10-12 00:00:00",
+      "Close": 9.600000381469727,
+      "EARLY_ENTRY": true,
+      "ENTRY_SCORE": 3,
+      "EARLY_WARNING": "",
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
+      "ReferenceTarget7Pct": 10.272000408172609,
+      "ReferenceTarget15Pct": 11.040000438690186
+    },
+    {
+      "Symbol": "GULF.BK",
+      "Date": "2026-10-12 00:00:00",
+      "Close": 60.75,
+      "EARLY_ENTRY": true,
+      "ENTRY_SCORE": 3,
+      "EARLY_WARNING": "",
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
+      "ReferenceTarget7Pct": 65.0025,
+      "ReferenceTarget15Pct": 69.8625
     },
     {
       "Symbol": "GUNKUL.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 4.98,
+      "Close": 4.980000019073486,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
       "SignalReasons": "MACD Histogram rising for 2 bars; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 5.328600000000001,
-      "ReferenceTarget15Pct": 5.727
+      "ReferenceTarget7Pct": 5.328600020408631,
+      "ReferenceTarget15Pct": 5.727000021934509
     },
     {
       "Symbol": "ITC.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 16.8,
+      "Close": 16.799999237060547,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Stochastic bullish",
-      "ReferenceTarget7Pct": 17.976000000000003,
-      "ReferenceTarget15Pct": 19.32
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
+      "ReferenceTarget7Pct": 17.975999183654785,
+      "ReferenceTarget15Pct": 19.319999122619627
     },
     {
-      "Symbol": "KLINIQ.BK",
+      "Symbol": "JMART.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 32.25,
+      "Close": 9.850000381469727,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Close above prior-day Close; recent Squeeze support",
-      "ReferenceTarget7Pct": 34.5075,
-      "ReferenceTarget15Pct": 37.0875
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
+      "ReferenceTarget7Pct": 10.539500408172609,
+      "ReferenceTarget15Pct": 11.327500438690185
     },
     {
       "Symbol": "M.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 20.1,
+      "Close": 20.100000381469727,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
       "SignalReasons": "MACD Histogram rising for 2 bars; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 21.507,
-      "ReferenceTarget15Pct": 23.115
+      "ReferenceTarget7Pct": 21.50700040817261,
+      "ReferenceTarget15Pct": 23.115000438690185
     },
     {
       "Symbol": "MOSHI.BK",
@@ -384,42 +304,31 @@
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Close above prior-day Close; Stochastic bullish",
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
       "ReferenceTarget7Pct": 37.45,
       "ReferenceTarget15Pct": 40.25
     },
     {
       "Symbol": "PRM.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 8.6,
+      "Close": 8.600000381469727,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Stochastic bullish",
-      "ReferenceTarget7Pct": 9.202,
-      "ReferenceTarget15Pct": 9.889999999999999
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
+      "ReferenceTarget7Pct": 9.202000408172609,
+      "ReferenceTarget15Pct": 9.890000438690185
     },
     {
       "Symbol": "PSGC.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 4.92,
+      "Close": 4.920000076293945,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Stochastic bullish",
-      "ReferenceTarget7Pct": 5.2644,
-      "ReferenceTarget15Pct": 5.6579999999999995
-    },
-    {
-      "Symbol": "PTT.BK",
-      "Date": "2026-10-12 00:00:00",
-      "Close": 40.25,
-      "EARLY_ENTRY": true,
-      "ENTRY_SCORE": 3,
-      "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above prior-day Close; recent Squeeze support",
-      "ReferenceTarget7Pct": 43.0675,
-      "ReferenceTarget15Pct": 46.287499999999994
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
+      "ReferenceTarget7Pct": 5.2644000816345216,
+      "ReferenceTarget15Pct": 5.658000087738037
     },
     {
       "Symbol": "SAPPE.BK",
@@ -428,7 +337,7 @@
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Close above prior-day Close; Stochastic bullish",
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
       "ReferenceTarget7Pct": 34.5075,
       "ReferenceTarget15Pct": 37.0875
     },
@@ -439,42 +348,31 @@
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; recent Squeeze support",
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; recent Squeeze support",
       "ReferenceTarget7Pct": 32.1,
       "ReferenceTarget15Pct": 34.5
     },
     {
       "Symbol": "SGP.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 8.9,
+      "Close": 8.899999618530273,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Stochastic bullish",
-      "ReferenceTarget7Pct": 9.523000000000001,
-      "ReferenceTarget15Pct": 10.235
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
+      "ReferenceTarget7Pct": 9.522999591827393,
+      "ReferenceTarget15Pct": 10.234999561309813
     },
     {
       "Symbol": "SINGER.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 12.6,
+      "Close": 12.600000381469727,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Close above prior-day Close; Stochastic bullish",
-      "ReferenceTarget7Pct": 13.482000000000001,
-      "ReferenceTarget15Pct": 14.489999999999998
-    },
-    {
-      "Symbol": "SIS.BK",
-      "Date": "2026-10-12 00:00:00",
-      "Close": 25.5,
-      "EARLY_ENTRY": true,
-      "ENTRY_SCORE": 3,
-      "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Close above prior-day Close; recent Squeeze support",
-      "ReferenceTarget7Pct": 27.285,
-      "ReferenceTarget15Pct": 29.325
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
+      "ReferenceTarget7Pct": 13.482000408172608,
+      "ReferenceTarget15Pct": 14.490000438690185
     },
     {
       "Symbol": "SJWD.BK",
@@ -483,42 +381,53 @@
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Close above prior-day Close; Stochastic bullish",
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
       "ReferenceTarget7Pct": 10.700000000000001,
       "ReferenceTarget15Pct": 11.5
     },
     {
       "Symbol": "SKY.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 17.6,
+      "Close": 17.600000381469727,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Close above prior-day Close; recent Squeeze support",
-      "ReferenceTarget7Pct": 18.832000000000004,
-      "ReferenceTarget15Pct": 20.24
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; recent Squeeze support",
+      "ReferenceTarget7Pct": 18.832000408172608,
+      "ReferenceTarget15Pct": 20.240000438690185
     },
     {
       "Symbol": "STECON.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 17.6,
+      "Close": 17.600000381469727,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
       "SignalReasons": "MACD Histogram rising for 2 bars; Stochastic bullish; recent Squeeze support",
-      "ReferenceTarget7Pct": 18.832000000000004,
-      "ReferenceTarget15Pct": 20.24
+      "ReferenceTarget7Pct": 18.832000408172608,
+      "ReferenceTarget15Pct": 20.240000438690185
     },
     {
       "Symbol": "THG.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 6.8,
+      "Close": 6.800000190734863,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above EMA5; Close above prior-day Close; Stochastic bullish",
-      "ReferenceTarget7Pct": 7.276,
-      "ReferenceTarget15Pct": 7.819999999999999
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
+      "ReferenceTarget7Pct": 7.276000204086304,
+      "ReferenceTarget15Pct": 7.820000219345093
+    },
+    {
+      "Symbol": "TTA.BK",
+      "Date": "2026-10-12 00:00:00",
+      "Close": 5.099999904632568,
+      "EARLY_ENTRY": true,
+      "ENTRY_SCORE": 3,
+      "EARLY_WARNING": "",
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
+      "ReferenceTarget7Pct": 5.456999897956848,
+      "ReferenceTarget15Pct": 5.864999890327453
     },
     {
       "Symbol": "TTW.BK",
@@ -534,13 +443,24 @@
     {
       "Symbol": "VIH.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 8.35,
+      "Close": 8.350000381469727,
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; Close above prior-day Close; Stochastic bullish",
-      "ReferenceTarget7Pct": 8.9345,
-      "ReferenceTarget15Pct": 9.6025
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
+      "ReferenceTarget7Pct": 8.934500408172608,
+      "ReferenceTarget15Pct": 9.602500438690186
+    },
+    {
+      "Symbol": "WHAUP.BK",
+      "Date": "2026-10-12 00:00:00",
+      "Close": 7.0,
+      "EARLY_ENTRY": true,
+      "ENTRY_SCORE": 3,
+      "EARLY_WARNING": "",
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
+      "ReferenceTarget7Pct": 7.49,
+      "ReferenceTarget15Pct": 8.049999999999999
     },
     {
       "Symbol": "BCH.BK",
@@ -556,13 +476,13 @@
     {
       "Symbol": "CHG.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 1.59,
+      "Close": 1.590000033378601,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 2,
       "EARLY_WARNING": "WATCH",
       "SignalReasons": "MACD Histogram falling for 2 bars; Stochastic weakening",
-      "ReferenceTarget7Pct": 1.7013000000000003,
-      "ReferenceTarget15Pct": 1.8285
+      "ReferenceTarget7Pct": 1.7013000357151034,
+      "ReferenceTarget15Pct": 1.828500038385391
     },
     {
       "Symbol": "CRC.BK",
@@ -578,35 +498,35 @@
     {
       "Symbol": "KAMART.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 7.3,
+      "Close": 7.300000190734863,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 2,
       "EARLY_WARNING": "WATCH",
       "SignalReasons": "MACD Histogram falling for 2 bars",
-      "ReferenceTarget7Pct": 7.811,
-      "ReferenceTarget15Pct": 8.395
+      "ReferenceTarget7Pct": 7.811000204086304,
+      "ReferenceTarget15Pct": 8.395000219345093
     },
     {
       "Symbol": "KSL.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 1.84,
+      "Close": 1.840000033378601,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 2,
       "EARLY_WARNING": "WATCH",
       "SignalReasons": "MACD Histogram falling for 2 bars",
-      "ReferenceTarget7Pct": 1.9688,
-      "ReferenceTarget15Pct": 2.116
+      "ReferenceTarget7Pct": 1.9688000357151032,
+      "ReferenceTarget15Pct": 2.116000038385391
     },
     {
       "Symbol": "SAMART.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 5.6,
+      "Close": 5.599999904632568,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 2,
       "EARLY_WARNING": "WATCH",
       "SignalReasons": "MACD Histogram falling for 2 bars; Stochastic weakening",
-      "ReferenceTarget7Pct": 5.992,
-      "ReferenceTarget15Pct": 6.4399999999999995
+      "ReferenceTarget7Pct": 5.991999897956848,
+      "ReferenceTarget15Pct": 6.439999890327453
     },
     {
       "Symbol": "XO.BK",
@@ -618,17 +538,6 @@
       "SignalReasons": "MACD Histogram falling for 2 bars",
       "ReferenceTarget7Pct": 20.865000000000002,
       "ReferenceTarget15Pct": 22.424999999999997
-    },
-    {
-      "Symbol": "AOT.BK",
-      "Date": "2026-10-12 00:00:00",
-      "Close": 58.0,
-      "EARLY_ENTRY": false,
-      "ENTRY_SCORE": 2,
-      "EARLY_WARNING": "WARNING",
-      "SignalReasons": "Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 62.06,
-      "ReferenceTarget15Pct": 66.69999999999999
     },
     {
       "Symbol": "SAT.BK",
@@ -644,200 +553,145 @@
     {
       "Symbol": "SCGD.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 5.4,
+      "Close": 5.400000095367432,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 2,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD crossed below Signal; Close below EMA5; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 5.7780000000000005,
-      "ReferenceTarget15Pct": 6.21
+      "ReferenceTarget7Pct": 5.778000102043152,
+      "ReferenceTarget15Pct": 6.210000109672546
     },
     {
       "Symbol": "AIT.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 4.76,
+      "Close": 4.760000228881836,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 1,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening",
-      "ReferenceTarget7Pct": 5.0932,
-      "ReferenceTarget15Pct": 5.473999999999999
+      "ReferenceTarget7Pct": 5.0932002449035645,
+      "ReferenceTarget15Pct": 5.474000263214111
+    },
+    {
+      "Symbol": "AOT.BK",
+      "Date": "2026-10-12 00:00:00",
+      "Close": 58.0,
+      "EARLY_ENTRY": false,
+      "ENTRY_SCORE": 1,
+      "EARLY_WARNING": "WARNING",
+      "SignalReasons": "Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
+      "ReferenceTarget7Pct": 62.06,
+      "ReferenceTarget15Pct": 66.69999999999999
     },
     {
       "Symbol": "BTS.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 1.83,
+      "Close": 1.8300000429153442,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 1,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 1.9581000000000002,
-      "ReferenceTarget15Pct": 2.1045
+      "ReferenceTarget7Pct": 1.9581000459194184,
+      "ReferenceTarget15Pct": 2.104500049352646
     },
     {
       "Symbol": "CK.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 17.3,
+      "Close": 17.299999237060547,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 1,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 18.511000000000003,
-      "ReferenceTarget15Pct": 19.895
+      "ReferenceTarget7Pct": 18.510999183654786,
+      "ReferenceTarget15Pct": 19.894999122619627
     },
     {
       "Symbol": "CKP.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 2.32,
+      "Close": 2.319999933242798,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 1,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD crossed below Signal; Close below EMA5; Stochastic weakening",
-      "ReferenceTarget7Pct": 2.4824,
-      "ReferenceTarget15Pct": 2.6679999999999997
-    },
-    {
-      "Symbol": "FORTH.BK",
-      "Date": "2026-10-12 00:00:00",
-      "Close": 13.9,
-      "EARLY_ENTRY": false,
-      "ENTRY_SCORE": 1,
-      "EARLY_WARNING": "WARNING",
-      "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 14.873000000000001,
-      "ReferenceTarget15Pct": 15.985
-    },
-    {
-      "Symbol": "HMPRO.BK",
-      "Date": "2026-10-12 00:00:00",
-      "Close": 6.4,
-      "EARLY_ENTRY": false,
-      "ENTRY_SCORE": 1,
-      "EARLY_WARNING": "WARNING",
-      "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening",
-      "ReferenceTarget7Pct": 6.848000000000001,
-      "ReferenceTarget15Pct": 7.359999999999999
+      "ReferenceTarget7Pct": 2.482399928569794,
+      "ReferenceTarget15Pct": 2.6679999232292175
     },
     {
       "Symbol": "ICHI.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 13.1,
+      "Close": 13.100000381469727,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 1,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 14.017000000000001,
-      "ReferenceTarget15Pct": 15.064999999999998
+      "ReferenceTarget7Pct": 14.017000408172608,
+      "ReferenceTarget15Pct": 15.065000438690184
     },
     {
       "Symbol": "MAJOR.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 7.4,
+      "Close": 7.400000095367432,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 1,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening",
-      "ReferenceTarget7Pct": 7.918000000000001,
-      "ReferenceTarget15Pct": 8.51
+      "ReferenceTarget7Pct": 7.918000102043153,
+      "ReferenceTarget15Pct": 8.510000109672546
     },
     {
       "Symbol": "MC.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 11.3,
+      "Close": 11.300000190734863,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 1,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD crossed below Signal; Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 12.091000000000001,
-      "ReferenceTarget15Pct": 12.995
+      "ReferenceTarget7Pct": 12.091000204086304,
+      "ReferenceTarget15Pct": 12.995000219345092
     },
     {
       "Symbol": "PM.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 10.9,
+      "Close": 10.899999618530273,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 1,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening",
-      "ReferenceTarget7Pct": 11.663,
-      "ReferenceTarget15Pct": 12.535
-    },
-    {
-      "Symbol": "PTG.BK",
-      "Date": "2026-10-12 00:00:00",
-      "Close": 8.1,
-      "EARLY_ENTRY": false,
-      "ENTRY_SCORE": 1,
-      "EARLY_WARNING": "WARNING",
-      "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 8.667,
-      "ReferenceTarget15Pct": 9.315
-    },
-    {
-      "Symbol": "PTTGC.BK",
-      "Date": "2026-10-12 00:00:00",
-      "Close": 52.0,
-      "EARLY_ENTRY": false,
-      "ENTRY_SCORE": 1,
-      "EARLY_WARNING": "WARNING",
-      "SignalReasons": "Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 55.64,
-      "ReferenceTarget15Pct": 59.8
-    },
-    {
-      "Symbol": "SMPC.BK",
-      "Date": "2026-10-12 00:00:00",
-      "Close": 9.45,
-      "EARLY_ENTRY": false,
-      "ENTRY_SCORE": 1,
-      "EARLY_WARNING": "WARNING",
-      "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening",
-      "ReferenceTarget7Pct": 10.1115,
-      "ReferenceTarget15Pct": 10.867499999999998
+      "ReferenceTarget7Pct": 11.662999591827393,
+      "ReferenceTarget15Pct": 12.534999561309814
     },
     {
       "Symbol": "SMT.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 7.35,
+      "Close": 7.349999904632568,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 1,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD Histogram falling for 2 bars; Stochastic weakening; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 7.8645000000000005,
-      "ReferenceTarget15Pct": 8.452499999999999
+      "ReferenceTarget7Pct": 7.864499897956849,
+      "ReferenceTarget15Pct": 8.452499890327452
     },
     {
       "Symbol": "SNNP.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 6.6,
+      "Close": 6.599999904632568,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 1,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening",
-      "ReferenceTarget7Pct": 7.062,
-      "ReferenceTarget15Pct": 7.589999999999999
-    },
-    {
-      "Symbol": "SSP.BK",
-      "Date": "2026-10-12 00:00:00",
-      "Close": 7.7,
-      "EARLY_ENTRY": false,
-      "ENTRY_SCORE": 1,
-      "EARLY_WARNING": "WARNING",
-      "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening",
-      "ReferenceTarget7Pct": 8.239,
-      "ReferenceTarget15Pct": 8.854999999999999
+      "ReferenceTarget7Pct": 7.061999897956849,
+      "ReferenceTarget15Pct": 7.589999890327453
     },
     {
       "Symbol": "STA.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 22.9,
+      "Close": 22.899999618530273,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 1,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 24.503,
-      "ReferenceTarget15Pct": 26.334999999999997
+      "ReferenceTarget7Pct": 24.502999591827393,
+      "ReferenceTarget15Pct": 26.33499956130981
     },
     {
       "Symbol": "STPI.BK",
@@ -853,68 +707,68 @@
     {
       "Symbol": "TFG.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 9.1,
+      "Close": 9.100000381469727,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 1,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 9.737,
-      "ReferenceTarget15Pct": 10.464999999999998
+      "ReferenceTarget7Pct": 9.737000408172609,
+      "ReferenceTarget15Pct": 10.465000438690184
     },
     {
       "Symbol": "TOA.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 14.8,
+      "Close": 14.800000190734863,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 1,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 15.836000000000002,
-      "ReferenceTarget15Pct": 17.02
+      "ReferenceTarget7Pct": 15.836000204086305,
+      "ReferenceTarget15Pct": 17.020000219345093
     },
     {
       "Symbol": "TRUE.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 12.4,
+      "Close": 12.399999618530273,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 1,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 13.268,
-      "ReferenceTarget15Pct": 14.26
+      "ReferenceTarget7Pct": 13.267999591827394,
+      "ReferenceTarget15Pct": 14.259999561309813
     },
     {
       "Symbol": "UVAN.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 13.1,
+      "Close": 13.100000381469727,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 1,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening",
-      "ReferenceTarget7Pct": 14.017000000000001,
-      "ReferenceTarget15Pct": 15.064999999999998
+      "ReferenceTarget7Pct": 14.017000408172608,
+      "ReferenceTarget15Pct": 15.065000438690184
     },
     {
       "Symbol": "EA.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 2.68,
+      "Close": 2.680000066757202,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 0,
       "EARLY_WARNING": "WATCH",
       "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5",
-      "ReferenceTarget7Pct": 2.8676000000000004,
-      "ReferenceTarget15Pct": 3.082
+      "ReferenceTarget7Pct": 2.8676000714302066,
+      "ReferenceTarget15Pct": 3.082000076770782
     },
     {
       "Symbol": "AAI.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 4.16,
+      "Close": 4.159999847412109,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 0,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 4.4512,
-      "ReferenceTarget15Pct": 4.784
+      "ReferenceTarget7Pct": 4.451199836730957,
+      "ReferenceTarget15Pct": 4.783999824523925
     },
     {
       "Symbol": "BCP.BK",
@@ -930,35 +784,57 @@
     {
       "Symbol": "BTG.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 19.7,
+      "Close": 19.700000762939453,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 0,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 21.079,
-      "ReferenceTarget15Pct": 22.654999999999998
+      "ReferenceTarget7Pct": 21.079000816345218,
+      "ReferenceTarget15Pct": 22.65500087738037
+    },
+    {
+      "Symbol": "FORTH.BK",
+      "Date": "2026-10-12 00:00:00",
+      "Close": 13.899999618530273,
+      "EARLY_ENTRY": false,
+      "ENTRY_SCORE": 0,
+      "EARLY_WARNING": "WARNING",
+      "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; down close with higher volume than prior day",
+      "ReferenceTarget7Pct": 14.872999591827394,
+      "ReferenceTarget15Pct": 15.984999561309813
     },
     {
       "Symbol": "GFPT.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 11.2,
+      "Close": 11.199999809265137,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 0,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening",
-      "ReferenceTarget7Pct": 11.984,
-      "ReferenceTarget15Pct": 12.879999999999999
+      "ReferenceTarget7Pct": 11.983999795913697,
+      "ReferenceTarget15Pct": 12.879999780654906
+    },
+    {
+      "Symbol": "HMPRO.BK",
+      "Date": "2026-10-12 00:00:00",
+      "Close": 6.400000095367432,
+      "EARLY_ENTRY": false,
+      "ENTRY_SCORE": 0,
+      "EARLY_WARNING": "WARNING",
+      "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening",
+      "ReferenceTarget7Pct": 6.8480001020431525,
+      "ReferenceTarget15Pct": 7.360000109672546
     },
     {
       "Symbol": "IRPC.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 2.86,
+      "Close": 2.859999895095825,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 0,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 3.0602,
-      "ReferenceTarget15Pct": 3.2889999999999997
+      "ReferenceTarget7Pct": 3.060199887752533,
+      "ReferenceTarget15Pct": 3.288999879360199
     },
     {
       "Symbol": "IVL.BK",
@@ -974,13 +850,13 @@
     {
       "Symbol": "JTS.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 22.3,
+      "Close": 22.299999237060547,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 0,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD crossed below Signal; Close below EMA5",
-      "ReferenceTarget7Pct": 23.861,
-      "ReferenceTarget15Pct": 25.645
+      "ReferenceTarget7Pct": 23.860999183654787,
+      "ReferenceTarget15Pct": 25.644999122619627
     },
     {
       "Symbol": "KCE.BK",
@@ -1016,48 +892,92 @@
       "ReferenceTarget15Pct": 8.049999999999999
     },
     {
-      "Symbol": "SKR.BK",
+      "Symbol": "PTG.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 7.9,
-      "EARLY_ENTRY": false,
-      "ENTRY_SCORE": 0,
-      "EARLY_WARNING": "WARNING",
-      "SignalReasons": "Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 8.453000000000001,
-      "ReferenceTarget15Pct": 9.084999999999999
-    },
-    {
-      "Symbol": "SPCG.BK",
-      "Date": "2026-10-12 00:00:00",
-      "Close": 11.9,
+      "Close": 8.100000381469727,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 0,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 12.733,
-      "ReferenceTarget15Pct": 13.684999999999999
+      "ReferenceTarget7Pct": 8.667000408172608,
+      "ReferenceTarget15Pct": 9.315000438690184
     },
     {
-      "Symbol": "SPRC.BK",
+      "Symbol": "PTTGC.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 15.2,
+      "Close": 52.0,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 0,
       "EARLY_WARNING": "WARNING",
-      "SignalReasons": "MACD crossed below Signal; MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
-      "ReferenceTarget7Pct": 16.264,
-      "ReferenceTarget15Pct": 17.479999999999997
+      "SignalReasons": "Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
+      "ReferenceTarget7Pct": 55.64,
+      "ReferenceTarget15Pct": 59.8
     },
     {
-      "Symbol": "TKN.BK",
+      "Symbol": "SKR.BK",
       "Date": "2026-10-12 00:00:00",
-      "Close": 4.52,
+      "Close": 7.900000095367432,
+      "EARLY_ENTRY": false,
+      "ENTRY_SCORE": 0,
+      "EARLY_WARNING": "WARNING",
+      "SignalReasons": "Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
+      "ReferenceTarget7Pct": 8.453000102043152,
+      "ReferenceTarget15Pct": 9.085000109672546
+    },
+    {
+      "Symbol": "SMPC.BK",
+      "Date": "2026-10-12 00:00:00",
+      "Close": 9.449999809265137,
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 0,
       "EARLY_WARNING": "WARNING",
       "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening",
-      "ReferenceTarget7Pct": 4.8364,
-      "ReferenceTarget15Pct": 5.1979999999999995
+      "ReferenceTarget7Pct": 10.111499795913696,
+      "ReferenceTarget15Pct": 10.867499780654907
+    },
+    {
+      "Symbol": "SPCG.BK",
+      "Date": "2026-10-12 00:00:00",
+      "Close": 11.899999618530273,
+      "EARLY_ENTRY": false,
+      "ENTRY_SCORE": 0,
+      "EARLY_WARNING": "WARNING",
+      "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
+      "ReferenceTarget7Pct": 12.732999591827394,
+      "ReferenceTarget15Pct": 13.684999561309814
+    },
+    {
+      "Symbol": "SPRC.BK",
+      "Date": "2026-10-12 00:00:00",
+      "Close": 15.199999809265137,
+      "EARLY_ENTRY": false,
+      "ENTRY_SCORE": 0,
+      "EARLY_WARNING": "WARNING",
+      "SignalReasons": "MACD crossed below Signal; MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
+      "ReferenceTarget7Pct": 16.263999795913698,
+      "ReferenceTarget15Pct": 17.479999780654907
+    },
+    {
+      "Symbol": "SSP.BK",
+      "Date": "2026-10-12 00:00:00",
+      "Close": 7.699999809265137,
+      "EARLY_ENTRY": false,
+      "ENTRY_SCORE": 0,
+      "EARLY_WARNING": "WARNING",
+      "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening",
+      "ReferenceTarget7Pct": 8.238999795913697,
+      "ReferenceTarget15Pct": 8.854999780654907
+    },
+    {
+      "Symbol": "TKN.BK",
+      "Date": "2026-10-12 00:00:00",
+      "Close": 4.519999980926514,
+      "EARLY_ENTRY": false,
+      "ENTRY_SCORE": 0,
+      "EARLY_WARNING": "WARNING",
+      "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening",
+      "ReferenceTarget7Pct": 4.83639997959137,
+      "ReferenceTarget15Pct": 5.19799997806549
     },
     {
       "Symbol": "TOP.BK",
@@ -1084,29 +1004,5 @@
   ],
   "report_path": "reports/latest_scan.csv",
   "summary_path": "reports/latest_scan_summary.json",
-  "data_note": "20-session traded value is estimated as Close × Volume; it is not the exchange's exact traded-value field.",
-  "scanner_commit": "4670a9725a5e7e0e22da60ce1e385fe0f363fb3c",
-  "notebook_commit": "4670a9725a5e7e0e22da60ce1e385fe0f363fb3c",
-  "integrity_check_passed": true,
-  "integrity_checks": [
-    "non-empty report",
-    "non-blank unique symbols",
-    "single valid scan date",
-    "all rows pass universe gate",
-    "ENTRY_SCORE within 0..5",
-    "positive Close",
-    "required signal columns present"
-  ],
-  "classification_source": "https://raw.githubusercontent.com/lumduan/thai-securities-data/main/thai_securities_all_en.json",
-  "history_source_counts": {
-    "SET_ONLY": 133,
-    "SET_PLUS_YAHOO_BACKFILL": 1
-  },
-  "official_set_latest_trading_date": "2026-10-12",
-  "stale_data_exclusion_categories": {
-    "date_mismatch_or_no_trade_bar": 44,
-    "schema_or_parse_failure": 11,
-    "other_history_failure": 1,
-    "stale_indicator_data": 0
-  }
+  "data_note": "20-session traded value is estimated as Close × Volume; it is not the exchange's exact traded-value field."
 }
