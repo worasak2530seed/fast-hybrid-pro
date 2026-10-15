@@ -1,1 +1,18 @@
-/tmp/ipykernel_1958/3143008260.py:14 in <cell line: 0>\n<Fast_Hybrid_Pro_Scanner_Cell>:415 in <module>\n<Fast_Hybrid_Pro_Scanner_Cell>:279 in get_official_set_latest_trading_date\nRuntimeError: OFFICIAL_MARKET_DATE_UNAVAILABLE: no recent completed non-holiday date could be verified from official SET market pages and holiday calendar. No report will be published.\n
+{
+  "run_id": "20261015T121653Z",
+  "status": "PARTIAL",
+  "updated_at_utc": "2026-10-15T12:16:53Z",
+  "scan_error_count": 2,
+  "scan_errors_detail": {
+    "SPC.BK": "ValueError: Insufficient completed intraday bars: 50",
+    "SPI.BK": "ValueError: Insufficient completed intraday bars: 28"
+  },
+  "intraday_signal_error_count": 2,
+  "intraday_signal_errors": {
+    "SPC.BK": "ValueError: Insufficient completed intraday bars: 50",
+    "SPI.BK": "ValueError: Insufficient completed intraday bars: 28"
+  },
+  "stale_data_excluded_count": 0,
+  "stale_data_exclusions": {},
+  "note": "This diagnostic file belongs to the latest published run; it replaces any traceback from an older run."
+}
