@@ -228,6 +228,53 @@ def calculate_indicators(ohlcv: pd.DataFrame, config: ScannerConfig = CONFIG) ->
     return df
 
 
+def scan_intraday_signal(ohlcv: pd.DataFrame, config: ScannerConfig = CONFIG) -> dict[str, Any]:
+    """Calculate signals from completed intraday OHLCV candles; periods count bars, not days."""
+    if ohlcv is None or ohlcv.empty:
+        raise ValueError("Intraday OHLCV data is empty")
+    frame = ohlcv.copy()
+    if isinstance(frame.columns, pd.MultiIndex):
+        frame.columns = frame.columns.get_level_values(0)
+    frame.columns = [str(c).strip().title() for c in frame.columns]
+    missing = [column for column in REQUIRED_OHLCV if column not in frame.columns]
+    if missing:
+        raise ValueError(f"Missing intraday OHLCV columns: {missing}")
+    frame = frame.loc[:, ~frame.columns.duplicated()].copy()
+    frame.index = pd.to_datetime(frame.index)
+    if getattr(frame.index, "tz", None) is not None:
+        frame.index = frame.index.tz_localize(None)
+    frame = frame[~frame.index.duplicated(keep="last")].sort_index()
+    for column in REQUIRED_OHLCV:
+        frame[column] = pd.to_numeric(frame[column], errors="coerce")
+    frame = frame.dropna(subset=list(REQUIRED_OHLCV))
+    if len(frame) < max(config.ema_long + 3, config.bb_window + 3):
+        raise ValueError(f"Insufficient completed intraday bars: {len(frame)}")
+    indicators = calculate_indicators(frame, config)
+    row = indicators.iloc[-1]
+    entry = bool(row.get("EARLY_ENTRY", False))
+    warning = str(row.get("EARLY_WARNING_LEVEL", "") or "")
+    if warning.lower() == "nan":
+        warning = ""
+    return {
+        "EARLY_ENTRY": entry,
+        "ENTRY_SCORE": int(row["ENTRY_SCORE"]) if pd.notna(row["ENTRY_SCORE"]) else 0,
+        "EARLY_WARNING": warning,
+        "SignalPrice": _number(row["Close"]),
+        "SignalTime": str(ohlcv.index[-1]),
+        "MACD": _number(row["MACD"]),
+        "MACD_SIGNAL": _number(row["MACD_SIGNAL"]),
+        "MACD_HIST": _number(row["MACD_HIST"]),
+        "HIST_RISING_2": bool(row["HIST_RISING_2"]),
+        "MACD_CROSS_UP": bool(row["MACD_CROSS_UP"]),
+        "MACD_CROSS_DOWN": bool(row["MACD_CROSS_DOWN"]),
+        "STOCH_K": _number(row["STOCH_K"]),
+        "STOCH_D": _number(row["STOCH_D"]),
+        "SQUEEZE": bool(row["SQUEEZE"]),
+        "SQUEEZE_RELEASE": bool(row["SQUEEZE_RELEASE"]),
+        "SignalReasons": _signal_reasons(row, entry, warning),
+    }
+
+
 def scan_stock(
     symbol: str,
     ohlcv: pd.DataFrame,

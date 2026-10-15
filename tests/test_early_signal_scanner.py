@@ -11,6 +11,7 @@ from src.early_signal_scanner import (
     CONFIG,
     calculate_indicators,
     scan_stock,
+    scan_intraday_signal,
     universe_status,
 )
 
@@ -109,3 +110,19 @@ def test_empty_and_missing_ohlcv_raise_clear_errors():
         calculate_indicators(pd.DataFrame())
     with pytest.raises(ValueError, match="Missing OHLCV columns"):
         calculate_indicators(pd.DataFrame({"Close": [10]}, index=pd.to_datetime(["2025-01-01"])))
+
+def test_intraday_signal_uses_completed_ohlcv_bars():
+    data = sample_ohlcv(120)
+    data.index = pd.date_range("2026-10-15 10:00", periods=len(data), freq="15min", tz="Asia/Bangkok")
+    result = scan_intraday_signal(data)
+    assert "EARLY_ENTRY" in result
+    assert result["ENTRY_SCORE"] in range(6)
+    assert result["SignalPrice"] == pytest.approx(float(data["Close"].iloc[-1]))
+    assert result["SignalTime"]
+
+
+def test_intraday_signal_rejects_insufficient_or_missing_ohlcv():
+    with pytest.raises(ValueError, match="Insufficient completed intraday bars"):
+        scan_intraday_signal(sample_ohlcv(20))
+    with pytest.raises(ValueError, match="Missing intraday OHLCV columns"):
+        scan_intraday_signal(pd.DataFrame({"Close": [10]}))
