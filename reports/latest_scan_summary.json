@@ -10,10 +10,10 @@
     "required signal columns present",
     "intraday verification is reported separately and only passes during the expected market session when every row is fresh"
   ],
-  "run_id": "20261015T121653Z",
+  "run_id": "20261015T141511Z",
   "status": "PARTIAL",
   "scan_date": "2026-10-14",
-  "updated_at_utc": "2026-10-15T12:16:53Z",
+  "updated_at_utc": "2026-10-15T14:15:11Z",
   "universe_pass_count": 136,
   "indicator_data_count": 136,
   "scan_error_count": 2,
@@ -29,9 +29,9 @@
   },
   "stale_data_excluded_count": 0,
   "stale_data_exclusions": {},
-  "early_entry_count": 14,
-  "watch_warning_count": 51,
-  "signal_count": 65,
+  "early_entry_count": 16,
+  "watch_warning_count": 52,
+  "signal_count": 68,
   "signals": [
     {
       "Symbol": "GULF.BK",
@@ -45,6 +45,19 @@
       "SignalReasons": "MACD Histogram rising for 2 bars; MACD crossed above Signal; price recovery / above EMA5; Stochastic bullish; recent Squeeze support",
       "ReferenceTarget7Pct": 66.34,
       "ReferenceTarget15Pct": 71.3
+    },
+    {
+      "Symbol": "SIS.BK",
+      "Date": "2026-10-14 00:00:00",
+      "Close": 25.5,
+      "SignalPrice": 25.25,
+      "SignalTime": "2026-10-15 16:15:00+07:00",
+      "EARLY_ENTRY": true,
+      "ENTRY_SCORE": 5,
+      "EARLY_WARNING": "",
+      "SignalReasons": "MACD Histogram rising for 2 bars; MACD crossed above Signal; price recovery / above EMA5; Stochastic bullish; recent Squeeze support",
+      "ReferenceTarget7Pct": 27.017500000000002,
+      "ReferenceTarget15Pct": 29.037499999999998
     },
     {
       "Symbol": "MAJOR.BK",
@@ -71,6 +84,45 @@
       "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish; recent Squeeze support",
       "ReferenceTarget7Pct": 5.3072000408172615,
       "ReferenceTarget15Pct": 5.704000043869018
+    },
+    {
+      "Symbol": "PSL.BK",
+      "Date": "2026-10-14 00:00:00",
+      "Close": 9.75,
+      "SignalPrice": 9.5,
+      "SignalTime": "2026-10-15 16:15:00+07:00",
+      "EARLY_ENTRY": true,
+      "ENTRY_SCORE": 4,
+      "EARLY_WARNING": "",
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish; recent Squeeze support",
+      "ReferenceTarget7Pct": 10.165000000000001,
+      "ReferenceTarget15Pct": 10.924999999999999
+    },
+    {
+      "Symbol": "CK.BK",
+      "Date": "2026-10-14 00:00:00",
+      "Close": 17.5,
+      "SignalPrice": 17.299999237060547,
+      "SignalTime": "2026-10-15 16:15:00+07:00",
+      "EARLY_ENTRY": true,
+      "ENTRY_SCORE": 4,
+      "EARLY_WARNING": "",
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish; recent Squeeze support",
+      "ReferenceTarget7Pct": 18.510999183654786,
+      "ReferenceTarget15Pct": 19.894999122619627
+    },
+    {
+      "Symbol": "HANA.BK",
+      "Date": "2026-10-14 00:00:00",
+      "Close": 52.5,
+      "SignalPrice": 50.5,
+      "SignalTime": "2026-10-15 16:15:00+07:00",
+      "EARLY_ENTRY": true,
+      "ENTRY_SCORE": 4,
+      "EARLY_WARNING": "",
+      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish; recent Squeeze support",
+      "ReferenceTarget7Pct": 54.035000000000004,
+      "ReferenceTarget15Pct": 58.074999999999996
     },
     {
       "Symbol": "SCGP.BK",
@@ -138,32 +190,6 @@
       "ReferenceTarget15Pct": 8.395000219345093
     },
     {
-      "Symbol": "PSL.BK",
-      "Date": "2026-10-14 00:00:00",
-      "Close": 9.75,
-      "SignalPrice": 9.5,
-      "SignalTime": "2026-10-15 16:15:00+07:00",
-      "EARLY_ENTRY": true,
-      "ENTRY_SCORE": 3,
-      "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; recent Squeeze support",
-      "ReferenceTarget7Pct": 10.165000000000001,
-      "ReferenceTarget15Pct": 10.924999999999999
-    },
-    {
-      "Symbol": "CK.BK",
-      "Date": "2026-10-14 00:00:00",
-      "Close": 17.5,
-      "SignalPrice": 17.299999237060547,
-      "SignalTime": "2026-10-15 16:15:00+07:00",
-      "EARLY_ENTRY": true,
-      "ENTRY_SCORE": 3,
-      "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; recent Squeeze support",
-      "ReferenceTarget7Pct": 18.510999183654786,
-      "ReferenceTarget15Pct": 19.894999122619627
-    },
-    {
       "Symbol": "CPF.BK",
       "Date": "2026-10-14 00:00:00",
       "Close": 21.299999237060547,
@@ -177,30 +203,30 @@
       "ReferenceTarget15Pct": 24.609999561309813
     },
     {
-      "Symbol": "HANA.BK",
+      "Symbol": "SABINA.BK",
       "Date": "2026-10-14 00:00:00",
-      "Close": 52.5,
-      "SignalPrice": 50.5,
+      "Close": 15.300000190734863,
+      "SignalPrice": 15.399999618530273,
       "SignalTime": "2026-10-15 16:15:00+07:00",
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
       "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; recent Squeeze support",
-      "ReferenceTarget7Pct": 54.035000000000004,
-      "ReferenceTarget15Pct": 58.074999999999996
+      "ReferenceTarget7Pct": 16.477999591827395,
+      "ReferenceTarget15Pct": 17.709999561309814
     },
     {
-      "Symbol": "RJH.BK",
+      "Symbol": "SPCG.BK",
       "Date": "2026-10-14 00:00:00",
-      "Close": 16.299999237060547,
-      "SignalPrice": 17.200000762939453,
+      "Close": 12.0,
+      "SignalPrice": 11.699999809265137,
       "SignalTime": "2026-10-15 16:15:00+07:00",
       "EARLY_ENTRY": true,
       "ENTRY_SCORE": 3,
       "EARLY_WARNING": "",
-      "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
-      "ReferenceTarget7Pct": 18.404000816345217,
-      "ReferenceTarget15Pct": 19.78000087738037
+      "SignalReasons": "MACD Histogram rising for 2 bars; Stochastic bullish; recent Squeeze support",
+      "ReferenceTarget7Pct": 12.518999795913697,
+      "ReferenceTarget15Pct": 13.454999780654907
     },
     {
       "Symbol": "AAI.BK",
@@ -214,6 +240,19 @@
       "SignalReasons": "MACD Histogram rising for 2 bars; price recovery / above EMA5; Stochastic bullish",
       "ReferenceTarget7Pct": 4.472599816322327,
       "ReferenceTarget15Pct": 4.8069998025894165
+    },
+    {
+      "Symbol": "EPG.BK",
+      "Date": "2026-10-14 00:00:00",
+      "Close": 6.650000095367432,
+      "SignalPrice": 6.550000190734863,
+      "SignalTime": "2026-10-15 16:15:00+07:00",
+      "EARLY_ENTRY": false,
+      "ENTRY_SCORE": 3,
+      "EARLY_WARNING": "WATCH",
+      "SignalReasons": "MACD Histogram falling for 2 bars",
+      "ReferenceTarget7Pct": 7.008500204086304,
+      "ReferenceTarget15Pct": 7.532500219345092
     },
     {
       "Symbol": "AH.BK",
@@ -255,19 +294,6 @@
       "ReferenceTarget15Pct": 58.074999999999996
     },
     {
-      "Symbol": "EPG.BK",
-      "Date": "2026-10-14 00:00:00",
-      "Close": 6.650000095367432,
-      "SignalPrice": 6.550000190734863,
-      "SignalTime": "2026-10-15 16:15:00+07:00",
-      "EARLY_ENTRY": false,
-      "ENTRY_SCORE": 2,
-      "EARLY_WARNING": "WATCH",
-      "SignalReasons": "MACD Histogram falling for 2 bars; Stochastic weakening",
-      "ReferenceTarget7Pct": 7.008500204086304,
-      "ReferenceTarget15Pct": 7.532500219345092
-    },
-    {
       "Symbol": "TOA.BK",
       "Date": "2026-10-14 00:00:00",
       "Close": 15.0,
@@ -292,19 +318,6 @@
       "SignalReasons": "MACD Histogram falling for 2 bars",
       "ReferenceTarget7Pct": 1.9581000459194184,
       "ReferenceTarget15Pct": 2.104500049352646
-    },
-    {
-      "Symbol": "PTG.BK",
-      "Date": "2026-10-14 00:00:00",
-      "Close": 8.199999809265137,
-      "SignalPrice": 8.149999618530273,
-      "SignalTime": "2026-10-15 16:15:00+07:00",
-      "EARLY_ENTRY": false,
-      "ENTRY_SCORE": 2,
-      "EARLY_WARNING": "WATCH",
-      "SignalReasons": "MACD Histogram falling for 2 bars",
-      "ReferenceTarget7Pct": 8.720499591827393,
-      "ReferenceTarget15Pct": 9.372499561309814
     },
     {
       "Symbol": "TVO.BK",
@@ -380,7 +393,7 @@
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 1,
       "EARLY_WARNING": "WARNING",
-      "SignalReasons": "MACD crossed below Signal; Close below EMA5",
+      "SignalReasons": "MACD crossed below Signal; Close below EMA5; Stochastic weakening",
       "ReferenceTarget7Pct": 9.63,
       "ReferenceTarget15Pct": 10.35
     },
@@ -411,6 +424,19 @@
       "ReferenceTarget15Pct": 5.864999890327453
     },
     {
+      "Symbol": "GLOBAL.BK",
+      "Date": "2026-10-14 00:00:00",
+      "Close": 6.650000095367432,
+      "SignalPrice": 6.699999809265137,
+      "SignalTime": "2026-10-15 16:15:00+07:00",
+      "EARLY_ENTRY": false,
+      "ENTRY_SCORE": 1,
+      "EARLY_WARNING": "WARNING",
+      "SignalReasons": "MACD crossed below Signal; MACD Histogram falling for 2 bars; Close below EMA5",
+      "ReferenceTarget7Pct": 7.168999795913697,
+      "ReferenceTarget15Pct": 7.704999780654907
+    },
+    {
       "Symbol": "COCOCO.BK",
       "Date": "2026-10-14 00:00:00",
       "Close": 5.449999809265137,
@@ -435,6 +461,19 @@
       "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5",
       "ReferenceTarget7Pct": 8.934500408172608,
       "ReferenceTarget15Pct": 9.602500438690186
+    },
+    {
+      "Symbol": "SMT.BK",
+      "Date": "2026-10-14 00:00:00",
+      "Close": 7.699999809265137,
+      "SignalPrice": 7.099999904632568,
+      "SignalTime": "2026-10-15 16:15:00+07:00",
+      "EARLY_ENTRY": false,
+      "ENTRY_SCORE": 1,
+      "EARLY_WARNING": "WATCH",
+      "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5",
+      "ReferenceTarget7Pct": 7.596999897956849,
+      "ReferenceTarget15Pct": 8.164999890327453
     },
     {
       "Symbol": "UVAN.BK",
@@ -549,7 +588,7 @@
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 1,
       "EARLY_WARNING": "WARNING",
-      "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening",
+      "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening; down close with higher volume than prior day",
       "ReferenceTarget7Pct": 13.375,
       "ReferenceTarget15Pct": 14.374999999999998
     },
@@ -788,17 +827,17 @@
       "ReferenceTarget15Pct": 22.309999561309812
     },
     {
-      "Symbol": "SMT.BK",
+      "Symbol": "SAV.BK",
       "Date": "2026-10-14 00:00:00",
-      "Close": 7.699999809265137,
-      "SignalPrice": 7.099999904632568,
+      "Close": 10.699999809265137,
+      "SignalPrice": 10.800000190734863,
       "SignalTime": "2026-10-15 16:15:00+07:00",
       "EARLY_ENTRY": false,
       "ENTRY_SCORE": 0,
       "EARLY_WARNING": "WARNING",
-      "SignalReasons": "MACD crossed below Signal; MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening",
-      "ReferenceTarget7Pct": 7.596999897956849,
-      "ReferenceTarget15Pct": 8.164999890327453
+      "SignalReasons": "MACD Histogram falling for 2 bars; Close below EMA5; Stochastic weakening",
+      "ReferenceTarget7Pct": 11.556000204086304,
+      "ReferenceTarget15Pct": 12.420000219345091
     },
     {
       "Symbol": "VIH.BK",
