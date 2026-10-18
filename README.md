@@ -36,3 +36,8 @@ bash termux/watch_scanner_reports.sh
 It uses the existing `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` environment variables and GitHub CLI authentication. It only watches published scan reports; it never runs the scanner.
 
 The previous repository tree is preserved on [archive/pre-scanner-main-2026-10-13](https://github.com/worasak2530seed/fast-hybrid-pro/tree/archive/pre-scanner-main-2026-10-13).
+
+## After-hours daily-bar scanner
+
+Use the separate [After-hours Scanner notebook](notebooks/After_Hours_Scanner.ipynb) when the SET market is closed. It calculates EARLY ENTRY / EARLY WARNING from the latest verified completed daily OHLCV bars, publishes the scan report to the `scan-reports` branch, and labels the output as `AFTER_HOURS_DAILY_CLOSED_BAR`. These are watchlist candidates for the next session, not live intraday signals. The existing intraday scanner remains available separately and requires fresh completed 15-minute bars during the SET session.
+
