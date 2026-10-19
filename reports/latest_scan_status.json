@@ -10,11 +10,11 @@
     "required signal columns present",
     "intraday verification is reported separately and only passes during the expected market session when every row is fresh"
   ],
-  "run_id": "20261018T102641Z",
+  "run_id": "20261019T102326Z",
   "status": "SUCCESS",
   "detail": "After-hours daily-bar scan completed; signals are watchlist candidates, not live intraday execution.",
   "scan_date": "2026-10-15",
-  "updated_at_utc": "2026-10-18T10:26:41Z",
+  "updated_at_utc": "2026-10-19T10:23:26Z",
   "report_path": "reports/latest_scan.csv",
   "summary_path": "reports/latest_scan_summary.json",
   "summary_url": "https://github.com/worasak2530seed/fast-hybrid-pro/blob/scan-reports/reports/latest_scan_summary.json",
