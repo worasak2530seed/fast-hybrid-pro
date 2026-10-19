@@ -1,22 +1,15 @@
 {
-  "integrity_check_passed": true,
-  "integrity_checks": [
-    "non-empty report",
-    "non-blank unique symbols",
-    "single valid scan date",
-    "all rows pass universe gate",
-    "ENTRY_SCORE within 0..5",
-    "positive Close",
-    "required signal columns present",
-    "intraday verification is reported separately and only passes during the expected market session when every row is fresh"
-  ],
-  "run_id": "20261019T102326Z",
-  "status": "SUCCESS",
-  "detail": "After-hours daily-bar scan completed; signals are watchlist candidates, not live intraday execution.",
-  "scan_date": "2026-10-15",
-  "updated_at_utc": "2026-10-19T10:23:26Z",
-  "report_path": "reports/latest_scan.csv",
+  "run_id": "20261019T115557Z",
+  "status": "FAILED",
+  "updated_at_utc": "2026-10-19T11:55:57Z",
+  "scan_date": null,
+  "error_type": "RuntimeError",
+  "error_message": "No stocks passed the price and total-20-session traded-value gates; stopping safely.",
+  "traceback_path": "reports/latest_scan_failure.txt",
+  "traceback_url": "https://github.com/worasak2530seed/fast-hybrid-pro/blob/scan-reports/reports/latest_scan_failure.txt",
+  "status_url": "https://github.com/worasak2530seed/fast-hybrid-pro/blob/scan-reports/reports/latest_scan_status.json",
+  "note": "This run failed. The previous successful CSV is intentionally preserved and must not be treated as the result of this failed run.",
   "summary_path": "reports/latest_scan_summary.json",
   "summary_url": "https://github.com/worasak2530seed/fast-hybrid-pro/blob/scan-reports/reports/latest_scan_summary.json",
-  "report_url": "https://github.com/worasak2530seed/fast-hybrid-pro/blob/scan-reports/reports/latest_scan.csv"
+  "report_url": null
 }
